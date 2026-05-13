@@ -1,6 +1,6 @@
 (function() {
     const BOT_UID = document.currentScript.getAttribute('data-bot-uid');
-    const API_BASE = 'http://localhost:8000/api';
+    const API_BASE = 'https://api.samskritisolutions.com/api';
     
     // Create Styles
     const style = document.createElement('style');

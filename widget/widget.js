@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  const BASE_URL = 'https://yourdomain.com/api'; // ← change to your API domain
+  const BASE_URL = 'https://api.samskritisolutions.com/api'; 
   const botId    = document.currentScript?.getAttribute('data-bot-id');
 
   if (!botId) { console.warn('[ChatBot] Missing data-bot-id attribute'); return; }
