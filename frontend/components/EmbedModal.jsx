@@ -4,7 +4,7 @@ import { Copy, Check, Code, X, Zap } from 'lucide-react';
 
 export default function EmbedModal({ bot, onClose }) {
   const [copied, setCopied] = useState(false);
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL?.replace('/api', '') || 'http://localhost:8000';
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL?.replace(/\/api$/, '') || 'http://localhost:8000';
   
   const embedCode = `<!-- AI Chatbot Embed -->
 <script 
