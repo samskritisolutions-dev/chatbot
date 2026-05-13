@@ -87,10 +87,16 @@ class BotController extends Controller
     public function embedCode(Request $request, Bot $bot): JsonResponse
     {
         $this->authorise($request, $bot);
-        $baseUrl = config('app.url');
+        
+        // Get the actual current domain being used
+        $baseUrl = $request->getSchemeAndHttpHost();
         
         $snippet = "<!-- AI Chatbot Embed -->\n" .
-                   "<script src=\"{$baseUrl}/widget.js\" data-bot-uid=\"{$bot->bot_uid}\" defer></script>\n" .
+                   "<script \n" .
+                   "  src=\"{$baseUrl}/widget.js\" \n" .
+                   "  data-bot-uid=\"{$bot->bot_uid}\" \n" .
+                   "  defer\n" .
+                   "></script>\n" .
                    "<!-- End AI Chatbot Embed -->";
 
         return response()->json(['code' => $snippet]);
