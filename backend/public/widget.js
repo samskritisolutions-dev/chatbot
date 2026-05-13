@@ -431,16 +431,19 @@
         } catch (e) { console.error('Config failed', e); }
     };
 
+    let messageCount = 0;
     const fetchHistory = async () => {
         try {
             const res = await fetch(`${API_BASE}/widget/${BOT_UID}/history?session_id=${sessionId}`);
             const data = await res.json();
-            if (data.length > 0) {
+            if (data.length > messageCount) {
+                messagesDiv.innerHTML = '';
                 leadForm.style.display = 'none';
                 messagesDiv.style.display = 'block';
                 chatInputArea.style.display = 'flex';
                 data.forEach(msg => addMessage(msg.role === 'user' ? 'user' : 'bot', msg.message));
                 tooltip.style.display = 'none';
+                messageCount = data.length;
             }
         } catch (e) { console.error('History failed', e); }
     };
@@ -454,7 +457,20 @@
         tooltip.style.display = 'none';
         if (!isOpen) {
             body.scrollTop = body.scrollHeight;
+            startPolling();
+        } else {
+            stopPolling();
         }
+    };
+
+    let pollInterval = null;
+    const startPolling = () => {
+        if (pollInterval) return;
+        pollInterval = setInterval(fetchHistory, 5000);
+    };
+    const stopPolling = () => {
+        clearInterval(pollInterval);
+        pollInterval = null;
     };
     close.onclick = () => { bubble.click(); };
 
