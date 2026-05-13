@@ -155,7 +155,7 @@ class ChatController extends Controller
                 ]);
             }
 
-            return response()->json(['error' => 'Failed to get response'], 500);
+            return response()->json(['reply' => 'System link unstable. Please try again later.'], 500);
         }
     }
 

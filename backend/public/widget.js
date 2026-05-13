@@ -514,7 +514,7 @@
             });
             const data = await response.json();
             showTyping(false);
-            addMessage('bot', data.reply);
+            addMessage('bot', data.reply || 'Neural link interrupted. Please refresh.');
             leadData = null; 
         } catch (e) { 
             showTyping(false);
