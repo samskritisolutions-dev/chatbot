@@ -1,29 +1,31 @@
-# Root .gitignore
-/node_modules
-/vendor
-.env
-.env.local
-.env.*.local
+# Root .gitignore for Chatbot Platform
+
+# Backend (Laravel)
+backend/.env
+backend/vendor/
+backend/storage/*.key
+backend/storage/framework/cache/data/*
+backend/storage/framework/sessions/*
+backend/storage/framework/views/*
+backend/storage/logs/*
+backend/public/storage
+backend/.phpunit.result.cache
+
+# Frontend (Next.js/React)
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/build/
+frontend/.env*
+frontend/.vercel
+frontend/*.tsbuildinfo
+frontend/next-env.d.ts
+
+# Misc
 .DS_Store
-dist
-build
-.next
-.vercel
-
-# Laravel specific
-/backend/vendor
-/backend/.env
-/backend/storage/*.key
-/backend/public/storage
-/backend/public/hot
-/backend/public/build
-
-# Frontend specific
-/frontend/node_modules
-/frontend/.next
-/frontend/.env
-/frontend/.env.local
-
-# Widget specific
-/widget/node_modules
-/widget/dist
+Thumbs.db
+node_modules/
+.env
+*.log
+.vscode/
+.idea/
