@@ -457,7 +457,8 @@
         tooltip.style.display = 'none';
         if (!isOpen) {
             body.scrollTop = body.scrollHeight;
-            startPolling();
+            // Resume polling if chat was already started
+            if (messageCount > 0) startPolling();
         } else {
             stopPolling();
         }
@@ -494,6 +495,7 @@
             messagesDiv.style.display = 'block';
             chatInputArea.style.display = 'flex';
             addMessage('bot', `System link established. Hello ${name.split(' ')[0]}! I am ${config.bot_name}. How can I assist you in this session?`);
+            startPolling(); // Begin listening for agent takeover messages
         }
     };
 
