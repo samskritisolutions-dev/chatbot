@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/init-db', function() {
+    Artisan::call('migrate --force');
+    return "Database tables created!";
 });
