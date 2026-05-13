@@ -46,6 +46,27 @@ export default function ConversationsPage() {
     }
   }, [messages]);
 
+  // Poll for new messages in the active session
+  useEffect(() => {
+    if (!selectedSession) return;
+    
+    const interval = setInterval(() => {
+      refreshMessages(selectedSession);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [selectedSession]);
+
+  const refreshMessages = async (session) => {
+    try {
+      const { data } = await api.get(`/conversations/${session}`);
+      // Only update state if message count changed to avoid flickering
+      setMessages(prev => prev.length !== data.length ? data : prev);
+    } catch (err) {
+      console.error('Failed to refresh messages');
+    }
+  };
+
   const fetchConversations = async () => {
     try {
       const { data } = await api.get('/conversations');
