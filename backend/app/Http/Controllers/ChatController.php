@@ -48,6 +48,11 @@ class ChatController extends Controller
 
         // 1. Fetch Bot with Client
         $bot = Bot::with('client')->where('bot_uid', $botUid)->where('is_active', 1)->firstOrFail();
+        \Illuminate\Support\Facades\Log::info('New Chat Message', [
+            'bot_uid' => $botUid,
+            'session_id' => $session,
+            'bot_found_id' => $bot->id
+        ]);
         $client = $bot->client;
 
         // 2. Check Usage Limits (SaaS Logic)
