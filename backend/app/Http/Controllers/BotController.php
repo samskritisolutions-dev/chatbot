@@ -98,6 +98,11 @@ class BotController extends Controller
 
     private function authorise(Request $request, Bot $bot): void
     {
+        \Illuminate\Support\Facades\Log::info('Auth Check', [
+            'user_id' => $request->user()->id,
+            'bot_owner_id' => $bot->client_id,
+            'bot_id' => $bot->id
+        ]);
         abort_if($bot->client_id !== $request->user()->id, 403, 'Unauthorized');
     }
 }
