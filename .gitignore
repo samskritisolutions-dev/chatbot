@@ -1,0 +1,29 @@
+# Root .gitignore
+/node_modules
+/vendor
+.env
+.env.local
+.env.*.local
+.DS_Store
+dist
+build
+.next
+.vercel
+
+# Laravel specific
+/backend/vendor
+/backend/.env
+/backend/storage/*.key
+/backend/public/storage
+/backend/public/hot
+/backend/public/build
+
+# Frontend specific
+/frontend/node_modules
+/frontend/.next
+/frontend/.env
+/frontend/.env.local
+
+# Widget specific
+/widget/node_modules
+/widget/dist
