@@ -13,12 +13,14 @@ class AgentController extends Controller
      */
     public function takeover(string $session): JsonResponse
     {
-        // In a real app, you'd store 'is_human_controlled' in a Session or Bot table.
-        // For now, we'll just log it.
-        
+        // Persist the takeover state so it survives dashboard refreshes
+        Conversation::where('session_id', $session)
+            ->update(['taken_over' => true]);
+
         return response()->json([
             'message' => 'Human agent has taken over the conversation.',
-            'session' => $session
+            'session' => $session,
+            'taken_over' => true
         ]);
     }
 

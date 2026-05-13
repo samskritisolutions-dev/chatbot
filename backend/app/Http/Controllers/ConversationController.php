@@ -55,6 +55,9 @@ class ConversationController extends Controller
 
         abort_if($messages->isEmpty(), 404, 'Session not found');
 
-        return response()->json($messages);
+        return response()->json([
+            'messages'   => $messages,
+            'taken_over' => $messages->first()->taken_over ?? false,
+        ]);
     }
 }

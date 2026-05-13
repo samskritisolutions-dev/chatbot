@@ -60,9 +60,10 @@ export default function ConversationsPage() {
   const fetchMessages = async (session) => {
     try {
       const { data } = await api.get(`/conversations/${session}`);
-      setMessages(data || []);
+      // API now returns { messages: [...], taken_over: bool }
+      setMessages(data.messages || data || []);
+      setIsHumanControlled(data.taken_over ?? false);
       setSelectedSession(session);
-      setIsHumanControlled(false);
       setShowMobileChat(true);
     } catch (err) {
       console.error('Failed to fetch messages');
