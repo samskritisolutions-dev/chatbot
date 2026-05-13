@@ -10,7 +10,7 @@
         #antigravity-widget { 
             font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; 
             position: fixed; 
-            bottom: 30px; 
+            bottom: 90px; 
             right: 30px; 
             z-index: 2147483647; 
             display: flex;
