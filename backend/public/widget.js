@@ -444,6 +444,8 @@
                 data.forEach(msg => addMessage(msg.role === 'user' ? 'user' : 'bot', msg.message));
                 tooltip.style.display = 'none';
                 messageCount = data.length;
+                // Auto-start polling if this is a restored session (first load)
+                startPolling();
             }
         } catch (e) { console.error('History failed', e); }
     };
