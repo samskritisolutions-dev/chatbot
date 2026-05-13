@@ -33,6 +33,7 @@ export default function ConversationsPage() {
   const [searchQuery, setSearchQuery] = useState('');
   
   const scrollRef = useRef(null);
+  const selectedSessionRef = useRef(null); // Tracks active session inside intervals
 
   useEffect(() => {
     fetchConversations();
@@ -40,11 +41,22 @@ export default function ConversationsPage() {
     return () => clearInterval(interval);
   }, []);
 
+  // Auto-scroll when messages update
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
   }, [messages]);
+
+  // Live-poll messages for the open conversation every 4 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (selectedSessionRef.current) {
+        fetchMessages(selectedSessionRef.current, true); // silent = true
+      }
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   const fetchConversations = async () => {
     try {
@@ -57,16 +69,19 @@ export default function ConversationsPage() {
     }
   };
 
-  const fetchMessages = async (session) => {
+  const fetchMessages = async (session, silent = false) => {
     try {
       const { data } = await api.get(`/conversations/${session}`);
-      // API now returns { messages: [...], taken_over: bool }
+      // API returns { messages: [...], taken_over: bool }
       setMessages(data.messages || data || []);
       setIsHumanControlled(data.taken_over ?? false);
-      setSelectedSession(session);
-      setShowMobileChat(true);
+      if (!silent) {
+        setSelectedSession(session);
+        selectedSessionRef.current = session;
+        setShowMobileChat(true);
+      }
     } catch (err) {
-      console.error('Failed to fetch messages');
+      if (!silent) console.error('Failed to fetch messages');
     }
   };
 
