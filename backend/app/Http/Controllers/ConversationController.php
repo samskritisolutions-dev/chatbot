@@ -15,6 +15,12 @@ class ConversationController extends Controller
     public function index(Request $request): JsonResponse
     {
         $botUids = $request->user()->bots()->pluck('bot_uid');
+        
+        \Illuminate\Support\Facades\Log::info('Dashboard Conversation Fetch', [
+            'user_id' => $request->user()->id,
+            'bot_uids' => $botUids->toArray(),
+            'total_conversations_in_db' => \App\Models\Conversation::count()
+        ]);
 
         // Subquery to get the latest message for each session belonging to the client's bots
         $sessions = Conversation::whereIn('bot_uid', $botUids)
