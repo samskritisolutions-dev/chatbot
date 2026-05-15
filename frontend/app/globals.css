@@ -296,3 +296,6 @@ body {
   transform: translateX(20px);
   background: linear-gradient(135deg, #78716c, #a8a29e);
 }
+
+
+[data-theme="dark"] .brand-logo { filter: brightness(1.6) saturate(1.2); }

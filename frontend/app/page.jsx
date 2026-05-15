@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { 
   ArrowRight, 
   Bot, 
@@ -29,12 +30,15 @@ export default function Home() {
       {/* Navbar */}
       <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[var(--border)] bg-black/20 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-[var(--primary)] rounded-xl flex items-center justify-center shadow-lg shadow-[var(--sidebar-active-shadow)]">
-              <Bot className="text-[var(--foreground)]" size={24} />
-            </div>
-            <span className="text-xl font-bold tracking-tight">Antigravity<span className="text-[var(--primary)]">AI</span></span>
-          </div>
+          <Link href="/" className="flex items-center gap-2">
+            <Image 
+              src="/logo.svg" 
+              alt="Samskriti Solutions" 
+              width={160} 
+              height={40} 
+              className="h-10 w-auto object-contain brand-logo"
+            />
+          </Link>
 
           <div className="hidden md:flex items-center gap-8">
             <Link href="#features" className="text-sm font-medium text-[var(--foreground-muted)] hover:text-[var(--foreground)] transition-colors">Features</Link>
@@ -196,12 +200,15 @@ export default function Home() {
       <footer className="px-6 py-20 border-t border-[var(--border)] bg-[#080809]">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="flex flex-col items-center md:items-start gap-4">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-[var(--primary)] rounded-lg flex items-center justify-center shadow-lg">
-                <Bot className="text-[var(--foreground)]" size={20} />
-              </div>
-              <span className="text-lg font-bold">Antigravity AI</span>
-            </div>
+            <Link href="/" className="flex items-center gap-2">
+              <Image 
+                src="/logo.svg" 
+                alt="Samskriti Solutions" 
+                width={140} 
+                height={35} 
+                className="h-8 w-auto object-contain brand-logo"
+              />
+            </Link>
             <p className="text-[var(--foreground-muted)] text-sm max-w-xs text-center md:text-left">
               The world's most intuitive AI support platform for modern digital businesses.
             </p>
@@ -214,7 +221,7 @@ export default function Home() {
           </div>
 
           <div className="text-[var(--foreground-muted)] text-sm">
-            &copy; {new Date().getFullYear()} Antigravity AI. All rights reserved.
+            &copy; {new Date().getFullYear()} Samskriti Solutions. All rights reserved.
           </div>
         </div>
       </footer>
