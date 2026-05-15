@@ -90,7 +90,7 @@ export default function LeadsPage() {
         <div className="flex items-center gap-3">
            <button 
              onClick={exportToCSV}
-             className="flex items-center gap-2 bg-[var(--card)] hover:bg-white/5 border border-[var(--border)] text-white px-8 py-4 rounded-2xl transition-all font-bold shadow-xl shadow-black/20"
+             className="flex items-center gap-2 bg-[var(--card)] hover:bg-white/5 border border-[var(--border)] text-[var(--foreground)] px-8 py-4 rounded-2xl transition-all font-bold shadow-xl shadow-black/20"
            >
              <Download size={20} className="text-[var(--primary)]" />
              Export CSV
@@ -108,10 +108,10 @@ export default function LeadsPage() {
              placeholder="Search by name, email, or metadata..."
              value={searchQuery}
              onChange={(e) => setSearchQuery(e.target.value)}
-             className="w-full bg-[var(--card)] border border-[var(--border)] rounded-2xl py-5 pl-14 pr-6 text-sm focus:outline-none focus:border-[var(--primary-light)] transition-all text-white placeholder:text-[var(--foreground-subtle)] relative z-10"
+             className="w-full bg-[var(--card)] border border-[var(--border)] rounded-2xl py-5 pl-14 pr-6 text-sm focus:outline-none focus:border-[var(--primary-light)] transition-all text-[var(--foreground)] placeholder:text-[var(--foreground-subtle)] relative z-10"
            />
         </div>
-        <button className="bg-[var(--card)] border border-[var(--border)] p-5 rounded-2xl text-[var(--foreground-muted)] hover:text-white transition-all flex items-center gap-2 font-bold text-xs uppercase tracking-widest">
+        <button className="bg-[var(--card)] border border-[var(--border)] p-5 rounded-2xl text-[var(--foreground-muted)] hover:text-[var(--foreground)] transition-all flex items-center gap-2 font-bold text-xs uppercase tracking-widest">
            <Filter size={18} />
            Advanced Filters
         </button>
@@ -127,11 +127,11 @@ export default function LeadsPage() {
           <div className="w-24 h-24 bg-[var(--primary-light)] rounded-[32px] border border-[var(--primary-light)] flex items-center justify-center text-[var(--primary)] mx-auto mb-8 shadow-inner shadow-[var(--primary-light)]">
             <Database size={48} className="animate-float" />
           </div>
-          <h2 className="text-2xl font-black text-white mb-3">Neural Storage Empty</h2>
+          <h2 className="text-2xl font-black text-[var(--foreground)] mb-3">Neural Storage Empty</h2>
           <p className="text-[var(--foreground-muted)] max-w-sm mx-auto font-medium mb-10">Deploy your agents on a live site to start capturing high-intent customer leads automatically.</p>
           <button 
             onClick={() => window.location.href = '/dashboard/bots'}
-            className="bg-white/5 hover:bg-white/10 text-white font-bold px-8 py-4 rounded-2xl transition-all border border-[var(--border)] flex items-center gap-3 mx-auto"
+            className="bg-white/5 hover:bg-white/10 text-[var(--foreground)] font-bold px-8 py-4 rounded-2xl transition-all border border-[var(--border)] flex items-center gap-3 mx-auto"
           >
              Set Up Capture Forms <ArrowUpRight size={18} />
           </button>
@@ -152,7 +152,7 @@ export default function LeadsPage() {
                   <th className="px-10 py-8 border-b border-[var(--border)] text-right">Operation</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/[0.03] text-white">
+              <tbody className="divide-y divide-white/[0.03] text-[var(--foreground)]">
                 {filteredLeads.map((lead) => (
                   <tr key={lead.id} className="hover:bg-white/[0.01] transition-all duration-300 group">
                     <td className="px-10 py-7">
@@ -168,11 +168,11 @@ export default function LeadsPage() {
                     </td>
                     <td className="px-10 py-7">
                       <div className="space-y-2">
-                        <div className="flex items-center gap-3 text-xs font-bold text-gray-400">
+                        <div className="flex items-center gap-3 text-xs font-bold text-[var(--foreground-muted)]">
                           <div className="w-6 h-6 rounded-lg bg-white/5 flex items-center justify-center text-[var(--foreground-subtle)]"><Mail size={12} /></div>
                           {lead.email}
                         </div>
-                        <div className="flex items-center gap-3 text-xs font-bold text-gray-400">
+                        <div className="flex items-center gap-3 text-xs font-bold text-[var(--foreground-muted)]">
                           <div className="w-6 h-6 rounded-lg bg-white/5 flex items-center justify-center text-[var(--foreground-subtle)]"><Phone size={12} /></div>
                           {lead.phone || 'N/A'}
                         </div>
@@ -180,7 +180,7 @@ export default function LeadsPage() {
                     </td>
                     <td className="px-10 py-7">
                       <div className="flex flex-col">
-                        <div className="flex items-center gap-2 text-xs font-black text-gray-400 mb-1">
+                        <div className="flex items-center gap-2 text-xs font-black text-[var(--foreground-muted)] mb-1">
                           <Calendar size={14} className="text-[var(--foreground-subtle)]" />
                           {new Date(lead.created_at).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}
                         </div>
@@ -197,7 +197,7 @@ export default function LeadsPage() {
                     </td>
                     <td className="px-10 py-7 text-right">
                       <div className="flex items-center justify-end gap-3 opacity-0 group-hover:opacity-100 transition-all translate-x-4 group-hover:translate-x-0">
-                        <button className="p-3 bg-white/5 hover:bg-white/10 rounded-xl text-gray-400 hover:text-white transition-all border border-[var(--border)]">
+                        <button className="p-3 bg-white/5 hover:bg-white/10 rounded-xl text-[var(--foreground-muted)] hover:text-[var(--foreground)] transition-all border border-[var(--border)]">
                           <ExternalLink size={18} />
                         </button>
                         <button 
@@ -216,7 +216,7 @@ export default function LeadsPage() {
           
           {/* Footer Pagination Mock */}
           <div className="p-8 bg-white/[0.01] border-t border-[var(--border)] flex items-center justify-between">
-             <p className="text-xs font-bold text-[var(--foreground-muted)]">Showing <span className="text-white">{filteredLeads.length}</span> results in real-time</p>
+             <p className="text-xs font-bold text-[var(--foreground-muted)]">Showing <span className="text-[var(--foreground)]">{filteredLeads.length}</span> results in real-time</p>
              <div className="flex items-center gap-2">
                 <button className="p-2 rounded-lg bg-white/5 border border-[var(--border)] text-[var(--foreground-subtle)] cursor-not-allowed"><ChevronRight size={16} className="rotate-180" /></button>
                 <div className="flex items-center gap-1 px-4">
@@ -224,7 +224,7 @@ export default function LeadsPage() {
                    <div className="w-1.5 h-1.5 rounded-full bg-white/5" />
                    <div className="w-1.5 h-1.5 rounded-full bg-white/5" />
                 </div>
-                <button className="p-2 rounded-lg bg-white/5 border border-[var(--border)] text-gray-400 hover:text-white"><ChevronRight size={16} /></button>
+                <button className="p-2 rounded-lg bg-white/5 border border-[var(--border)] text-[var(--foreground-muted)] hover:text-[var(--foreground)]"><ChevronRight size={16} /></button>
              </div>
           </div>
         </div>

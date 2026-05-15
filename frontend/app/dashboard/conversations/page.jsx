@@ -133,7 +133,7 @@ export default function ConversationsPage() {
                   Live
                </span>
              </h2>
-             <button className="p-2 text-[var(--foreground-subtle)] hover:text-white transition-colors">
+             <button className="p-2 text-[var(--foreground-subtle)] hover:text-[var(--foreground)] transition-colors">
                 <Filter size={20} />
              </button>
           </div>
@@ -144,7 +144,7 @@ export default function ConversationsPage() {
               placeholder="Filter identities..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-[var(--input-bg)] border border-[var(--border-strong)] rounded-2xl py-4 pl-12 pr-4 text-xs font-bold focus:outline-none focus:border-[var(--primary-light)] transition-all text-white placeholder:text-[var(--foreground-subtle)]"
+              className="w-full bg-[var(--input-bg)] border border-[var(--border-strong)] rounded-2xl py-4 pl-12 pr-4 text-xs font-bold focus:outline-none focus:border-[var(--primary-light)] transition-all text-[var(--foreground)] placeholder:text-[var(--foreground-subtle)]"
             />
           </div>
         </div>
@@ -179,7 +179,7 @@ export default function ConversationsPage() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between mb-1.5">
-                    <p className={`text-sm font-black truncate transition-colors ${selectedSession === conv.session_id ? 'text-[var(--primary)]' : 'text-white'}`}>
+                    <p className={`text-sm font-black truncate transition-colors ${selectedSession === conv.session_id ? 'text-[var(--primary)]' : 'text-[var(--foreground)]'}`}>
                       {conv.lead?.name || `Visitor_${conv.session_id.substring(0, 5)}`}
                     </p>
                     <span className="text-[10px] text-[var(--foreground-subtle)] font-black uppercase tracking-tighter">
@@ -205,7 +205,7 @@ export default function ConversationsPage() {
               <div className="flex items-center gap-5 min-w-0">
                 <button 
                   onClick={() => setShowMobileChat(false)}
-                  className="p-2 -ml-2 text-[var(--foreground-muted)] hover:text-white lg:hidden"
+                  className="p-2 -ml-2 text-[var(--foreground-muted)] hover:text-[var(--foreground)] lg:hidden"
                 >
                   <ChevronLeft size={24} />
                 </button>
@@ -213,7 +213,7 @@ export default function ConversationsPage() {
                   <MessageSquare size={24} />
                 </div>
                 <div className="truncate">
-                  <h3 className="text-lg font-black text-white truncate flex items-center gap-2">
+                  <h3 className="text-lg font-black text-[var(--foreground)] truncate flex items-center gap-2">
                     {conversations.find(c => c.session_id === selectedSession)?.lead?.name || `Interactive_Channel_${selectedSession.substring(0, 5)}`}
                     <Circle size={8} className="fill-emerald-500 text-emerald-500 animate-pulse" />
                   </h3>
@@ -224,7 +224,7 @@ export default function ConversationsPage() {
               </div>
 
               <div className="flex items-center gap-4">
-                 <button className="hidden sm:flex p-3 text-[var(--foreground-subtle)] hover:text-white transition-colors">
+                 <button className="hidden sm:flex p-3 text-[var(--foreground-subtle)] hover:text-[var(--foreground)] transition-colors">
                     <MoreVertical size={20} />
                  </button>
                  <button 
@@ -262,7 +262,7 @@ export default function ConversationsPage() {
                     {msg.role === 'user' ? <User size={20} /> : <Bot size={20} />}
                   </div>
                   <div className={`group relative max-w-[80%] lg:max-w-xl p-5 lg:p-6 rounded-[28px] ${
-                    msg.role === 'user' ? 'bg-[var(--input-bg)] text-gray-200 rounded-tl-none border border-[var(--border)]' : 'bg-[var(--primary-light)] text-white rounded-tr-none border border-[var(--primary-light)] shadow-xl shadow-[var(--primary-light)]'
+                    msg.role === 'user' ? 'bg-[var(--input-bg)] text-[var(--foreground)] rounded-tl-none border border-[var(--border)]' : 'bg-[var(--primary-light)] text-[var(--foreground)] rounded-tr-none border border-[var(--primary-light)] shadow-xl shadow-[var(--primary-light)]'
                   }`}>
                     <p className="text-[13px] lg:text-sm font-medium leading-relaxed">{msg.message}</p>
                     <div className={`absolute bottom-[-24px] flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity ${msg.role === 'user' ? 'left-0' : 'right-0'}`}>

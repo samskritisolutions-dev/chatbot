@@ -85,25 +85,25 @@ export default function AdminDashboard() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-8 bg-gradient-to-r from-[var(--primary-light)] to-[var(--accent-light)] rounded-3xl border border-[var(--primary-light)] shadow-2xl shadow-[var(--sidebar-active-shadow)]">
         <div className="flex items-center gap-4">
-          <div className="w-16 h-16 bg-[var(--primary)] rounded-2xl flex items-center justify-center text-white shadow-lg shadow-[var(--sidebar-active-shadow)]">
+          <div className="w-16 h-16 bg-[var(--primary)] rounded-2xl flex items-center justify-center text-[var(--foreground)] shadow-lg shadow-[var(--sidebar-active-shadow)]">
             <ShieldCheck size={32} />
           </div>
           <div>
             <h1 className="text-3xl font-bold">Super Admin Dashboard</h1>
-            <p className="text-gray-400">Manage clients, plans, and platform-wide data.</p>
+            <p className="text-[var(--foreground-muted)]">Manage clients, plans, and platform-wide data.</p>
           </div>
         </div>
         
         <div className="flex bg-black/40 p-1.5 rounded-2xl border border-[var(--border)] self-start md:self-center">
           <button 
             onClick={() => setActiveTab('overview')}
-            className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center gap-2 ${activeTab === 'overview' ? 'bg-[var(--primary)] text-white shadow-lg shadow-[var(--sidebar-active-shadow)]' : 'text-gray-400 hover:text-white'}`}
+            className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center gap-2 ${activeTab === 'overview' ? 'bg-[var(--primary)] text-white shadow-lg shadow-[var(--sidebar-active-shadow)]' : 'text-[var(--foreground-muted)] hover:text-[var(--foreground)]'}`}
           >
             <LayoutDashboard size={18} /> Overview
           </button>
           <button 
             onClick={() => setActiveTab('conversations')}
-            className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center gap-2 ${activeTab === 'conversations' ? 'bg-[var(--primary)] text-white shadow-lg shadow-[var(--sidebar-active-shadow)]' : 'text-gray-400 hover:text-white'}`}
+            className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center gap-2 ${activeTab === 'conversations' ? 'bg-[var(--primary)] text-white shadow-lg shadow-[var(--sidebar-active-shadow)]' : 'text-[var(--foreground-muted)] hover:text-[var(--foreground)]'}`}
           >
             <MessageSquare size={18} /> Global Chats
           </button>
@@ -204,7 +204,7 @@ export default function AdminDashboard() {
               </div>
               <div className="p-6 bg-white/5 mt-auto">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Platform Load</span>
+                  <span className="text-[10px] text-[var(--foreground-muted)] uppercase tracking-widest font-bold">Platform Load</span>
                   <span className="text-xs font-bold text-[var(--primary)]">78%</span>
                 </div>
                 <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
@@ -245,7 +245,7 @@ export default function AdminDashboard() {
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      <p className="text-xs text-gray-400 truncate max-w-xs">{conv.last_message}</p>
+                      <p className="text-xs text-[var(--foreground-muted)] truncate max-w-xs">{conv.last_message}</p>
                     </td>
                     <td className="px-6 py-4">
                       <p className="text-[10px] text-[var(--foreground-muted)] uppercase">{new Date(conv.last_message_at).toLocaleTimeString()}</p>
@@ -287,10 +287,10 @@ export default function AdminDashboard() {
               ) : (
                 sessionMessages.map((msg, i) => (
                   <div key={i} className={`flex items-start gap-3 ${msg.role === 'user' ? '' : 'flex-row-reverse text-right'}`}>
-                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${msg.role === 'user' ? 'bg-white/5 text-gray-400' : 'bg-[var(--primary-light)] text-[var(--primary)]'}`}>
+                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${msg.role === 'user' ? 'bg-white/5 text-[var(--foreground-muted)]' : 'bg-[var(--primary-light)] text-[var(--primary)]'}`}>
                       {msg.role === 'user' ? <Users size={14} /> : <Bot size={14} />}
                     </div>
-                    <div className={`max-w-[80%] p-3 rounded-2xl text-xs ${msg.role === 'user' ? 'bg-white/5 text-gray-300' : 'bg-[var(--primary)] text-white'}`}>
+                    <div className={`max-w-[80%] p-3 rounded-2xl text-xs ${msg.role === 'user' ? 'bg-white/5 text-[var(--foreground-muted)]' : 'bg-[var(--primary)] text-white'}`}>
                       {msg.message}
                     </div>
                   </div>

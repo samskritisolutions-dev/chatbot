@@ -121,7 +121,7 @@ export default function SettingsPage() {
                 <span className="text-[10px] font-black uppercase tracking-widest">Support</span>
              </div>
              <p className="text-[11px] text-[var(--foreground-muted)] leading-relaxed font-medium">Need assistance? Our engineering team is here to help 24/7.</p>
-             <button className="mt-4 text-[10px] font-black text-white uppercase tracking-widest hover:text-[var(--primary)] transition-colors">Open Ticket</button>
+             <button className="mt-4 text-[10px] font-black text-[var(--foreground)] uppercase tracking-widest hover:text-[var(--primary)] transition-colors">Open Ticket</button>
           </div>
         </div>
 
@@ -150,7 +150,7 @@ export default function SettingsPage() {
                     <p className="text-sm text-[var(--foreground-muted)] font-medium mb-4">Your avatar is displayed across the platform and in chat takeovers.</p>
                     <div className="flex gap-4 justify-center sm:justify-start">
                        <button className="text-[10px] font-black uppercase tracking-widest text-[var(--primary)] hover:text-[var(--primary)] transition-colors">Upload New</button>
-                       <button className="text-[10px] font-black uppercase tracking-widest text-[var(--foreground-subtle)] hover:text-gray-400 transition-colors">Remove</button>
+                       <button className="text-[10px] font-black uppercase tracking-widest text-[var(--foreground-subtle)] hover:text-[var(--foreground-muted)] transition-colors">Remove</button>
                     </div>
                   </div>
                 </div>
@@ -218,7 +218,7 @@ export default function SettingsPage() {
                       />
                       <button 
                         onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-5 top-1/2 -translate-y-1/2 text-[var(--foreground-subtle)] hover:text-white transition-colors"
+                        className="absolute right-5 top-1/2 -translate-y-1/2 text-[var(--foreground-subtle)] hover:text-[var(--foreground)] transition-colors"
                       >
                         {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                       </button>
@@ -275,15 +275,15 @@ export default function SettingsPage() {
                  <div className="max-w-md mx-auto grid grid-cols-2 gap-4 pt-4">
                     <div className="p-6 rounded-[32px] bg-[var(--input-bg)] border border-[var(--border)] text-left">
                        <span className="text-[10px] font-black text-[var(--foreground-subtle)] uppercase tracking-widest block mb-2">Next Invoice</span>
-                       <span className="text-lg font-black text-white">$29.00</span>
+                       <span className="text-lg font-black text-[var(--foreground)]">$29.00</span>
                     </div>
                     <div className="p-6 rounded-[32px] bg-[var(--input-bg)] border border-[var(--border)] text-left">
                        <span className="text-[10px] font-black text-[var(--foreground-subtle)] uppercase tracking-widest block mb-2">Due Date</span>
-                       <span className="text-lg font-black text-white">June 1, 2026</span>
+                       <span className="text-lg font-black text-[var(--foreground)]">June 1, 2026</span>
                     </div>
                  </div>
 
-                 <button className="mt-8 bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-white px-10 py-4 rounded-2xl font-black text-sm transition-all shadow-xl shadow-[var(--sidebar-active-shadow)]">Manage Subscription</button>
+                 <button className="mt-8 bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-[var(--foreground)] px-10 py-4 rounded-2xl font-black text-sm transition-all shadow-xl shadow-[var(--sidebar-active-shadow)]">Manage Subscription</button>
               </div>
             )}
 
@@ -313,7 +313,7 @@ function TabButton({ active, onClick, icon, label }) {
   return (
     <button 
       onClick={onClick}
-      className={`w-full flex items-center justify-between px-6 py-5 rounded-[24px] transition-all group ${active ? 'bg-[var(--primary)] text-white shadow-2xl shadow-[var(--sidebar-active-shadow)] border border-[var(--primary)]' : 'text-[var(--foreground-muted)] hover:bg-[var(--card)] hover:text-white border border-transparent'}`}
+      className={`w-full flex items-center justify-between px-6 py-5 rounded-[24px] transition-all group ${active ? 'bg-[var(--primary)] text-white shadow-2xl shadow-[var(--sidebar-active-shadow)] border border-[var(--primary)]' : 'text-[var(--foreground-muted)] hover:bg-[var(--card)] hover:text-[var(--foreground)] border border-transparent'}`}
     >
       <div className="flex items-center gap-4">
         <div className={`transition-transform duration-500 ${active ? 'scale-110' : 'group-hover:scale-110'}`}>

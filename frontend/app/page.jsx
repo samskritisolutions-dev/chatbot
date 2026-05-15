@@ -18,7 +18,7 @@ import {
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#050506] text-white selection:bg-[var(--primary)]/30 selection:text-[var(--foreground)]">
+    <div className="min-h-screen bg-[#050506] text-[var(--foreground)] selection:bg-[var(--primary)]/30 selection:text-[var(--foreground)]">
       {/* Background Decorative Elements */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[var(--primary-light)] rounded-full blur-[140px] opacity-50" />
@@ -31,20 +31,20 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-10 h-10 bg-[var(--primary)] rounded-xl flex items-center justify-center shadow-lg shadow-[var(--sidebar-active-shadow)]">
-              <Bot className="text-white" size={24} />
+              <Bot className="text-[var(--foreground)]" size={24} />
             </div>
             <span className="text-xl font-bold tracking-tight">Antigravity<span className="text-[var(--primary)]">AI</span></span>
           </div>
 
           <div className="hidden md:flex items-center gap-8">
-            <Link href="#features" className="text-sm font-medium text-gray-400 hover:text-white transition-colors">Features</Link>
-            <Link href="#pricing" className="text-sm font-medium text-gray-400 hover:text-white transition-colors">Pricing</Link>
-            <Link href="#docs" className="text-sm font-medium text-gray-400 hover:text-white transition-colors">Docs</Link>
+            <Link href="#features" className="text-sm font-medium text-[var(--foreground-muted)] hover:text-[var(--foreground)] transition-colors">Features</Link>
+            <Link href="#pricing" className="text-sm font-medium text-[var(--foreground-muted)] hover:text-[var(--foreground)] transition-colors">Pricing</Link>
+            <Link href="#docs" className="text-sm font-medium text-[var(--foreground-muted)] hover:text-[var(--foreground)] transition-colors">Docs</Link>
           </div>
 
           <div className="flex items-center gap-4">
-            <Link href="/login" className="text-sm font-medium text-gray-400 hover:text-white transition-colors">Sign In</Link>
-            <Link href="/register" className="px-5 py-2.5 bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-white text-sm font-bold rounded-xl transition-all shadow-lg shadow-[var(--sidebar-active-shadow)]">
+            <Link href="/login" className="text-sm font-medium text-[var(--foreground-muted)] hover:text-[var(--foreground)] transition-colors">Sign In</Link>
+            <Link href="/register" className="px-5 py-2.5 bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-[var(--foreground)] text-sm font-bold rounded-xl transition-all shadow-lg shadow-[var(--sidebar-active-shadow)]">
               Get Started
             </Link>
           </div>
@@ -64,7 +64,7 @@ export default function Home() {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] via-[var(--accent)] to-[var(--gold)]">Autonomous AI</span>
           </h1>
           
-          <p className="text-gray-400 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed animate-fade-in opacity-90">
+          <p className="text-[var(--foreground-muted)] text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed animate-fade-in opacity-90">
             Build, train, and deploy intelligent custom chatbots in under 60 seconds. Trained on your data, loyal to your brand.
           </p>
 
@@ -73,7 +73,7 @@ export default function Home() {
               Start Building Now
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </Link>
-            <Link href="#pricing" className="w-full sm:w-auto px-10 py-5 bg-white/5 border border-[var(--border-strong)] text-white font-bold rounded-2xl hover:bg-white/10 transition-all flex items-center justify-center gap-2">
+            <Link href="#pricing" className="w-full sm:w-auto px-10 py-5 bg-white/5 border border-[var(--border-strong)] text-[var(--foreground)] font-bold rounded-2xl hover:bg-white/10 transition-all flex items-center justify-center gap-2">
               Explore Plans
             </Link>
           </div>
@@ -198,7 +198,7 @@ export default function Home() {
           <div className="flex flex-col items-center md:items-start gap-4">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-[var(--primary)] rounded-lg flex items-center justify-center shadow-lg">
-                <Bot className="text-white" size={20} />
+                <Bot className="text-[var(--foreground)]" size={20} />
               </div>
               <span className="text-lg font-bold">Antigravity AI</span>
             </div>
@@ -207,10 +207,10 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="flex items-center gap-8 text-sm text-gray-400">
-             <Link href="#" className="hover:text-white transition-colors">Privacy</Link>
-             <Link href="#" className="hover:text-white transition-colors">Terms</Link>
-             <Link href="#" className="hover:text-white transition-colors">Contact</Link>
+          <div className="flex items-center gap-8 text-sm text-[var(--foreground-muted)]">
+             <Link href="#" className="hover:text-[var(--foreground)] transition-colors">Privacy</Link>
+             <Link href="#" className="hover:text-[var(--foreground)] transition-colors">Terms</Link>
+             <Link href="#" className="hover:text-[var(--foreground)] transition-colors">Contact</Link>
           </div>
 
           <div className="text-[var(--foreground-muted)] text-sm">
@@ -236,9 +236,9 @@ function FeatureCard({ icon, title, description }) {
 
 function PricingCard({ name, price, description, features, buttonText, highlighted = false }) {
   return (
-    <div className={`p-10 rounded-[40px] border flex flex-col transition-all hover:scale-[1.02] ${highlighted ? 'bg-[var(--primary)] border-[var(--primary)] shadow-2xl shadow-[var(--sidebar-active-shadow)] text-white' : 'bg-white/[0.02] border-[var(--border)] text-gray-300'}`}>
+    <div className={`p-10 rounded-[40px] border flex flex-col transition-all hover:scale-[1.02] ${highlighted ? 'bg-[var(--primary)] border-[var(--primary)] shadow-2xl shadow-[var(--sidebar-active-shadow)] text-[var(--foreground)]' : 'bg-white/[0.02] border-[var(--border)] text-[var(--foreground-muted)]'}`}>
       <div className="mb-10">
-        <h3 className={`text-lg font-black uppercase tracking-widest mb-4 ${highlighted ? 'text-white' : 'text-[var(--primary)]'}`}>{name}</h3>
+        <h3 className={`text-lg font-black uppercase tracking-widest mb-4 ${highlighted ? 'text-[var(--foreground)]' : 'text-[var(--primary)]'}`}>{name}</h3>
         <div className="flex items-baseline gap-1 mb-4">
           <span className="text-4xl font-black tracking-tight">{price !== 'Custom' && '$'}{price}</span>
           {price !== 'Custom' && <span className="text-sm opacity-60">/ month</span>}
@@ -249,15 +249,15 @@ function PricingCard({ name, price, description, features, buttonText, highlight
       <div className="space-y-4 mb-10 flex-1">
         {features.map((f, i) => (
           <div key={i} className="flex items-center gap-3 text-sm font-medium">
-            <CheckCircle2 size={18} className={highlighted ? 'text-white' : 'text-[var(--primary)]'} />
-            <span className={highlighted ? 'text-white' : 'text-gray-400'}>{f}</span>
+            <CheckCircle2 size={18} className={highlighted ? 'text-[var(--foreground)]' : 'text-[var(--primary)]'} />
+            <span className={highlighted ? 'text-[var(--foreground)]' : 'text-[var(--foreground-muted)]'}>{f}</span>
           </div>
         ))}
       </div>
 
       <Link 
         href="/register" 
-        className={`w-full py-4 rounded-2xl font-black text-center transition-all ${highlighted ? 'bg-white text-[var(--primary)] hover:bg-gray-100' : 'bg-white/5 hover:bg-white/10 text-white'}`}
+        className={`w-full py-4 rounded-2xl font-black text-center transition-all ${highlighted ? 'bg-white text-[var(--primary)] hover:bg-gray-100' : 'bg-white/5 hover:bg-white/10 text-[var(--foreground)]'}`}
       >
         {buttonText}
       </Link>

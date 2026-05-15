@@ -56,7 +56,7 @@ function LoginContent() {
   };
 
   return (
-    <div className="min-h-screen bg-[#050506] text-white flex items-center justify-center p-6 relative overflow-hidden">
+    <div className="min-h-screen bg-[#050506] text-[var(--foreground)] flex items-center justify-center p-6 relative overflow-hidden">
       {/* Background Decorative Elements */}
       <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-[var(--primary-light)] rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-600/10 rounded-full blur-[120px] pointer-events-none" />
@@ -66,7 +66,7 @@ function LoginContent() {
         <div className="flex flex-col items-center mb-10">
           <Link href="/" className="flex items-center gap-2 mb-6 hover:scale-105 transition-transform">
             <div className="w-12 h-12 bg-[var(--primary)] rounded-2xl flex items-center justify-center shadow-lg shadow-[var(--sidebar-active-shadow)]">
-              <Bot className="text-white" size={28} />
+              <Bot className="text-[var(--foreground)]" size={28} />
             </div>
             <span className="text-2xl font-bold tracking-tight">AntigravityAI</span>
           </Link>
@@ -119,7 +119,7 @@ function LoginContent() {
             <button
               disabled={loading}
               type="submit"
-              className="w-full bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-white font-bold py-4 rounded-2xl shadow-xl shadow-[var(--sidebar-active-shadow)] transition-all flex items-center justify-center gap-2 group mt-4"
+              className="w-full bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-[var(--foreground)] font-bold py-4 rounded-2xl shadow-xl shadow-[var(--sidebar-active-shadow)] transition-all flex items-center justify-center gap-2 group mt-4"
             >
               {loading ? (
                 <Loader2 className="animate-spin" size={20} />
@@ -139,7 +139,7 @@ function LoginContent() {
             <button
               type="button"
               onClick={handleGoogleLogin}
-              className="w-full bg-white/[0.03] hover:bg-white/[0.08] border border-[var(--border-strong)] text-white font-bold py-4 rounded-2xl transition-all flex items-center justify-center gap-3 group"
+              className="w-full bg-white/[0.03] hover:bg-white/[0.08] border border-[var(--border-strong)] text-[var(--foreground)] font-bold py-4 rounded-2xl transition-all flex items-center justify-center gap-3 group"
             >
               <img src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png" alt="Google" className="w-5 h-5 group-hover:scale-110 transition-transform" />
               Continue with Google
@@ -149,7 +149,7 @@ function LoginContent() {
           <div className="mt-8 pt-8 border-t border-[var(--border)] flex flex-col items-center gap-4">
              <p className="text-sm text-[var(--foreground-muted)]">
                New to Antigravity AI?{' '}
-               <Link href="/register" className="text-white font-bold hover:text-[var(--primary)] transition-colors">
+               <Link href="/register" className="text-[var(--foreground)] font-bold hover:text-[var(--primary)] transition-colors">
                  Create Account
                </Link>
              </p>

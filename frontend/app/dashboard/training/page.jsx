@@ -224,7 +224,7 @@ function TrainingContent() {
                   <select 
                     value={selectedBotId}
                     onChange={(e) => setSelectedBotId(e.target.value)}
-                    className="w-full bg-[var(--card-hover)] text-white border border-[var(--border-strong)] rounded-2xl py-4 pl-12 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/50 appearance-none font-bold"
+                    className="w-full bg-[var(--card-hover)] text-[var(--foreground)] border border-[var(--border-strong)] rounded-2xl py-4 pl-12 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/50 appearance-none font-bold"
                   >
                     {bots.length === 0 ? (
                       <option value="">No Agents Available</option>
@@ -244,21 +244,21 @@ function TrainingContent() {
                  <div className="grid grid-cols-1 gap-2">
                     <button 
                       onClick={() => setActiveTab('files')}
-                      className={`flex items-center gap-3 p-4 rounded-2xl transition-all border ${activeTab === 'files' ? 'bg-[var(--primary)] text-white border-[var(--primary)] shadow-xl shadow-[var(--sidebar-active-shadow)]' : 'bg-[var(--input-bg)] text-gray-400 border-[var(--border)] hover:bg-white/5'}`}
+                      className={`flex items-center gap-3 p-4 rounded-2xl transition-all border ${activeTab === 'files' ? 'bg-[var(--primary)] text-white border-[var(--primary)] shadow-xl shadow-[var(--sidebar-active-shadow)]' : 'bg-[var(--input-bg)] text-[var(--foreground-muted)] border-[var(--border)] hover:bg-white/5'}`}
                     >
                       <Upload size={18} />
                       <span className="text-xs font-bold uppercase tracking-widest">Documents</span>
                     </button>
                     <button 
                       onClick={() => setActiveTab('urls')}
-                      className={`flex items-center gap-3 p-4 rounded-2xl transition-all border ${activeTab === 'urls' ? 'bg-[var(--primary)] text-white border-[var(--primary)] shadow-xl shadow-[var(--sidebar-active-shadow)]' : 'bg-[var(--input-bg)] text-gray-400 border-[var(--border)] hover:bg-white/5'}`}
+                      className={`flex items-center gap-3 p-4 rounded-2xl transition-all border ${activeTab === 'urls' ? 'bg-[var(--primary)] text-white border-[var(--primary)] shadow-xl shadow-[var(--sidebar-active-shadow)]' : 'bg-[var(--input-bg)] text-[var(--foreground-muted)] border-[var(--border)] hover:bg-white/5'}`}
                     >
                       <Globe size={18} />
                       <span className="text-xs font-bold uppercase tracking-widest">Website Crawler</span>
                     </button>
                     <button 
                       onClick={() => setActiveTab('text')}
-                      className={`flex items-center gap-3 p-4 rounded-2xl transition-all border ${activeTab === 'text' ? 'bg-[var(--primary)] text-white border-[var(--primary)] shadow-xl shadow-[var(--sidebar-active-shadow)]' : 'bg-[var(--input-bg)] text-gray-400 border-[var(--border)] hover:bg-white/5'}`}
+                      className={`flex items-center gap-3 p-4 rounded-2xl transition-all border ${activeTab === 'text' ? 'bg-[var(--primary)] text-white border-[var(--primary)] shadow-xl shadow-[var(--sidebar-active-shadow)]' : 'bg-[var(--input-bg)] text-[var(--foreground-muted)] border-[var(--border)] hover:bg-white/5'}`}
                     >
                       <Type size={18} />
                       <span className="text-xs font-bold uppercase tracking-widest">Direct Input</span>
@@ -356,7 +356,7 @@ function TrainingContent() {
                     <button 
                       onClick={handleUrlImport}
                       disabled={isCrawling || !url}
-                      className="w-full bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-white font-black py-5 rounded-2xl transition-all shadow-xl shadow-[var(--sidebar-active-shadow)] flex items-center justify-center gap-3 disabled:opacity-50"
+                      className="w-full bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-[var(--foreground)] font-black py-5 rounded-2xl transition-all shadow-xl shadow-[var(--sidebar-active-shadow)] flex items-center justify-center gap-3 disabled:opacity-50"
                     >
                       {isCrawling ? (
                         <>
@@ -390,7 +390,7 @@ function TrainingContent() {
                     <button 
                       onClick={handleManualTextSave}
                       disabled={isSavingText || !manualText.trim()}
-                      className="w-full bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-white font-black py-5 rounded-2xl transition-all shadow-xl shadow-[var(--sidebar-active-shadow)] flex items-center justify-center gap-3 disabled:opacity-50"
+                      className="w-full bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-[var(--foreground)] font-black py-5 rounded-2xl transition-all shadow-xl shadow-[var(--sidebar-active-shadow)] flex items-center justify-center gap-3 disabled:opacity-50"
                     >
                       {isSavingText ? (
                         <>
@@ -458,7 +458,7 @@ function TrainingContent() {
                           </div>
                         </div>
                         <div className="flex items-center gap-2">
-                           <button className="p-3 text-[var(--foreground-subtle)] hover:text-white hover:bg-white/5 rounded-xl transition-all">
+                           <button className="p-3 text-[var(--foreground-subtle)] hover:text-[var(--foreground)] hover:bg-white/5 rounded-xl transition-all">
                               <ExternalLink size={18} />
                            </button>
                            <button 

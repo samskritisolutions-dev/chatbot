@@ -76,7 +76,7 @@ export default function BotsPage() {
         </div>
         <button 
           onClick={() => setIsModalOpen(true)}
-          className="bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-white font-bold px-8 py-4 rounded-2xl flex items-center justify-center gap-2 transition-all shadow-xl shadow-[var(--sidebar-active-shadow)] group"
+          className="bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-[var(--foreground)] font-bold px-8 py-4 rounded-2xl flex items-center justify-center gap-2 transition-all shadow-xl shadow-[var(--sidebar-active-shadow)] group"
         >
           <Plus size={20} className="group-hover:rotate-90 transition-transform duration-300" />
           Create New Bot
@@ -112,7 +112,7 @@ export default function BotsPage() {
           </p>
           <button 
             onClick={() => setIsModalOpen(true)}
-            className="bg-white/5 hover:bg-white/10 text-white font-bold px-8 py-4 rounded-2xl transition-all border border-[var(--border)] flex items-center gap-3"
+            className="bg-white/5 hover:bg-white/10 text-[var(--foreground)] font-bold px-8 py-4 rounded-2xl transition-all border border-[var(--border)] flex items-center gap-3"
           >
             Deploy Your First Agent <ArrowUpRight size={18} />
           </button>

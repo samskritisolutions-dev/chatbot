@@ -60,7 +60,7 @@ export default function DashboardPage() {
         </div>
         <div className="flex items-center gap-3 bg-[var(--card)] p-2 rounded-2xl border border-[var(--border)] shadow-xl">
            <button className="px-6 py-2.5 bg-[var(--primary)] text-white rounded-xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-[var(--sidebar-active-shadow)] transition-all">Real-time</button>
-           <button className="px-6 py-2.5 text-[var(--foreground-muted)] hover:text-white rounded-xl text-[10px] font-black uppercase tracking-widest transition-all">Historical</button>
+           <button className="px-6 py-2.5 text-[var(--foreground-muted)] hover:text-[var(--foreground)] rounded-xl text-[10px] font-black uppercase tracking-widest transition-all">Historical</button>
         </div>
       </div>
 
@@ -156,7 +156,7 @@ export default function DashboardPage() {
                 className="bg-[var(--card)] border border-[var(--border)] p-10 rounded-[40px] shadow-2xl group cursor-pointer hover:border-[var(--primary-light)] transition-all"
              >
                 <Target className="text-emerald-500 mb-6" size={32} />
-                <h3 className="text-2xl font-black text-white mb-2">Optimize Training</h3>
+                <h3 className="text-2xl font-black text-[var(--foreground)] mb-2">Optimize Training</h3>
                 <p className="text-[var(--foreground-muted)] text-sm font-medium mb-8">Refine your bot's knowledge base for higher accuracy and intent detection.</p>
                 <div className="flex items-center gap-2 text-emerald-500 font-black text-[10px] uppercase tracking-widest">
                    System Calibration <ArrowUpRight size={16} />
@@ -213,13 +213,13 @@ export default function DashboardPage() {
               onClick={() => window.location.href = '/dashboard/conversations'}
               className="w-full mt-12 py-5 bg-[var(--input-bg)] hover:bg-[var(--card-hover)] border border-[var(--border)] rounded-2xl flex items-center justify-center gap-3 group transition-all"
             >
-               <span className="text-[10px] font-black text-[var(--foreground-muted)] uppercase tracking-[0.2em] group-hover:text-white transition-colors">Audit Full History</span>
+               <span className="text-[10px] font-black text-[var(--foreground-muted)] uppercase tracking-[0.2em] group-hover:text-[var(--foreground)] transition-colors">Audit Full History</span>
                <ChevronRight size={14} className="text-[var(--foreground-subtle)] group-hover:text-[var(--primary)] group-hover:translate-x-1 transition-all" />
             </button>
           </div>
 
           {/* System Performance Mini Card */}
-          <div className="bg-gradient-to-br from-[#0c0c0e] to-[#161618] border border-[var(--border)] rounded-[40px] p-8 shadow-2xl overflow-hidden relative">
+          <div className="bg-gradient-to-br from-[var(--card)] to-[var(--card-hover)] border border-[var(--border)] rounded-[40px] p-8 shadow-2xl overflow-hidden relative">
              <div className="flex items-center gap-4 mb-6">
                 <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-500">
                    <Activity size={20} />
@@ -232,7 +232,7 @@ export default function DashboardPage() {
              <div className="space-y-4">
                 <div className="flex justify-between items-end">
                    <span className="text-[10px] font-black text-[var(--foreground-subtle)] uppercase">Uptime</span>
-                   <span className="text-sm font-black text-white">99.9%</span>
+                   <span className="text-sm font-black text-[var(--foreground)]">99.9%</span>
                 </div>
                 <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
                    <div className="bg-emerald-500 h-full w-[99.9%] rounded-full shadow-[0_0_8px_rgba(16,185,129,0.4)]" />
