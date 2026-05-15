@@ -43,7 +43,7 @@ export default function DashboardPage() {
   if (loading) return (
     <div className="h-[80vh] flex flex-col items-center justify-center gap-4">
       <div className="w-16 h-16 border-4 border-blue-600/20 border-t-blue-600 rounded-full animate-spin" />
-      <p className="text-gray-500 font-black text-[10px] uppercase tracking-[0.3em] animate-pulse">Syncing Neural Core...</p>
+      <p className="text-[var(--foreground-muted)] font-black text-[10px] uppercase tracking-[0.3em] animate-pulse">Syncing Neural Core...</p>
     </div>
   );
 
@@ -54,13 +54,13 @@ export default function DashboardPage() {
         <div>
           <h1 className="text-4xl font-black tracking-tight mb-2 flex items-center gap-3">
             Welcome back, {user?.name?.split(' ')[0] || 'Commander'}
-            <Sparkles className="text-blue-500" size={24} />
+            <Sparkles className="text-[var(--primary)]" size={24} />
           </h1>
-          <p className="text-gray-500 text-sm font-medium">Your intelligent workspace is operational. Here is your daily intelligence summary.</p>
+          <p className="text-[var(--foreground-muted)] text-sm font-medium">Your intelligent workspace is operational. Here is your daily intelligence summary.</p>
         </div>
-        <div className="flex items-center gap-3 bg-[#0c0c0e] p-2 rounded-2xl border border-white/5 shadow-xl">
-           <button className="px-6 py-2.5 bg-blue-600 text-white rounded-xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-blue-600/20 transition-all">Real-time</button>
-           <button className="px-6 py-2.5 text-gray-500 hover:text-white rounded-xl text-[10px] font-black uppercase tracking-widest transition-all">Historical</button>
+        <div className="flex items-center gap-3 bg-[var(--card)] p-2 rounded-2xl border border-[var(--border)] shadow-xl">
+           <button className="px-6 py-2.5 bg-[var(--primary)] text-white rounded-xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-[var(--sidebar-active-shadow)] transition-all">Real-time</button>
+           <button className="px-6 py-2.5 text-[var(--foreground-muted)] hover:text-white rounded-xl text-[10px] font-black uppercase tracking-widest transition-all">Historical</button>
         </div>
       </div>
 
@@ -98,18 +98,18 @@ export default function DashboardPage() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Main Activity Pulse */}
         <div className="lg:col-span-8 space-y-8">
-          <div className="bg-[#0c0c0e] border border-white/5 rounded-[40px] p-8 lg:p-12 shadow-2xl relative overflow-hidden group min-h-[450px] flex flex-col">
+          <div className="bg-[var(--card)] border border-[var(--border)] rounded-[40px] p-8 lg:p-12 shadow-2xl relative overflow-hidden group min-h-[450px] flex flex-col">
             {/* Background Texture */}
             <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
             
             <div className="flex items-center justify-between mb-12 relative z-10">
               <div>
                 <h3 className="text-2xl font-black mb-1">Intelligence Pulse</h3>
-                <p className="text-gray-600 text-[10px] font-black uppercase tracking-[0.2em]">Neural processing volume per day</p>
+                <p className="text-[var(--foreground-subtle)] text-[10px] font-black uppercase tracking-[0.2em]">Neural processing volume per day</p>
               </div>
               <div className="flex items-center gap-2">
-                 <div className="w-3 h-3 rounded-full bg-blue-600 animate-pulse mr-2" />
-                 <span className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Live Stream</span>
+                 <div className="w-3 h-3 rounded-full bg-[var(--primary)] animate-pulse mr-2" />
+                 <span className="text-[10px] font-black text-[var(--foreground-muted)] uppercase tracking-widest">Live Stream</span>
               </div>
             </div>
             
@@ -124,11 +124,11 @@ export default function DashboardPage() {
                            {day.count} Messages
                          </div>
                          <div 
-                           className="w-full bg-gradient-to-t from-blue-600 via-blue-500 to-cyan-400 rounded-2xl transition-all duration-1000 ease-out shadow-[0_0_20px_rgba(37,99,235,0.15)] group-hover/bar:shadow-[0_0_30px_rgba(37,99,235,0.4)] group-hover/bar:brightness-125" 
+                           className="w-full bg-gradient-to-t from-[var(--primary)] via-[var(--accent)] to-[var(--gold)] rounded-2xl transition-all duration-1000 ease-out shadow-[0_0_20px_rgba(37,99,235,0.15)] group-hover/bar:shadow-[0_0_30px_rgba(37,99,235,0.4)] group-hover/bar:brightness-125" 
                            style={{ height: `${Math.max(height, 8)}%` }}
                          />
                       </div>
-                      <span className="text-[10px] text-gray-600 font-black uppercase tracking-[0.2em]">
+                      <span className="text-[10px] text-[var(--foreground-subtle)] font-black uppercase tracking-[0.2em]">
                         {day.date ? new Date(day.date).toLocaleDateString([], { weekday: 'short' }) : ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'][i]}
                       </span>
                     </div>
@@ -141,23 +141,23 @@ export default function DashboardPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
              <div 
                 onClick={() => window.location.href = '/dashboard/bots'}
-                className="bg-gradient-to-br from-blue-600 to-blue-800 p-10 rounded-[40px] shadow-2xl relative overflow-hidden group cursor-pointer"
+                className="bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] p-10 rounded-[40px] shadow-2xl relative overflow-hidden group cursor-pointer"
              >
                 <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 blur-3xl -mr-20 -mt-20 group-hover:bg-white/20 transition-colors" />
                 <Zap className="text-white/40 mb-6" size={32} />
                 <h3 className="text-2xl font-black text-white mb-2">Deploy New Agent</h3>
-                <p className="text-blue-100/70 text-sm font-medium mb-8">Scale your operations instantly with a new intelligent workforce member.</p>
+                <p className="text-white/70 text-sm font-medium mb-8">Scale your operations instantly with a new intelligent workforce member.</p>
                 <div className="flex items-center gap-2 text-white font-black text-[10px] uppercase tracking-widest">
                    Initialize Deployment <ArrowUpRight size={16} />
                 </div>
              </div>
              <div 
                 onClick={() => window.location.href = '/dashboard/training'}
-                className="bg-[#0c0c0e] border border-white/5 p-10 rounded-[40px] shadow-2xl group cursor-pointer hover:border-blue-500/30 transition-all"
+                className="bg-[var(--card)] border border-[var(--border)] p-10 rounded-[40px] shadow-2xl group cursor-pointer hover:border-[var(--primary-light)] transition-all"
              >
                 <Target className="text-emerald-500 mb-6" size={32} />
                 <h3 className="text-2xl font-black text-white mb-2">Optimize Training</h3>
-                <p className="text-gray-500 text-sm font-medium mb-8">Refine your bot's knowledge base for higher accuracy and intent detection.</p>
+                <p className="text-[var(--foreground-muted)] text-sm font-medium mb-8">Refine your bot's knowledge base for higher accuracy and intent detection.</p>
                 <div className="flex items-center gap-2 text-emerald-500 font-black text-[10px] uppercase tracking-widest">
                    System Calibration <ArrowUpRight size={16} />
                 </div>
@@ -167,12 +167,12 @@ export default function DashboardPage() {
 
         {/* Recent Events Sidebar */}
         <div className="lg:col-span-4 space-y-8">
-          <div className="bg-[#0c0c0e] border border-white/5 rounded-[40px] p-8 shadow-2xl relative overflow-hidden">
+          <div className="bg-[var(--card)] border border-[var(--border)] rounded-[40px] p-8 shadow-2xl relative overflow-hidden">
             <div className="flex items-center justify-between mb-10">
                <h3 className="text-xl font-black">Neural Logs</h3>
                <button 
                 onClick={() => window.location.href = '/dashboard/conversations'}
-                className="text-[10px] font-black text-blue-500 uppercase tracking-widest hover:text-blue-400"
+                className="text-[10px] font-black text-[var(--primary)] uppercase tracking-widest hover:text-[var(--primary)]"
                >
                  View All
                </button>
@@ -211,27 +211,27 @@ export default function DashboardPage() {
 
             <button 
               onClick={() => window.location.href = '/dashboard/conversations'}
-              className="w-full mt-12 py-5 bg-white/[0.02] hover:bg-white/[0.05] border border-white/5 rounded-2xl flex items-center justify-center gap-3 group transition-all"
+              className="w-full mt-12 py-5 bg-[var(--input-bg)] hover:bg-[var(--card-hover)] border border-[var(--border)] rounded-2xl flex items-center justify-center gap-3 group transition-all"
             >
-               <span className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] group-hover:text-white transition-colors">Audit Full History</span>
-               <ChevronRight size={14} className="text-gray-700 group-hover:text-blue-500 group-hover:translate-x-1 transition-all" />
+               <span className="text-[10px] font-black text-[var(--foreground-muted)] uppercase tracking-[0.2em] group-hover:text-white transition-colors">Audit Full History</span>
+               <ChevronRight size={14} className="text-[var(--foreground-subtle)] group-hover:text-[var(--primary)] group-hover:translate-x-1 transition-all" />
             </button>
           </div>
 
           {/* System Performance Mini Card */}
-          <div className="bg-gradient-to-br from-[#0c0c0e] to-[#161618] border border-white/5 rounded-[40px] p-8 shadow-2xl overflow-hidden relative">
+          <div className="bg-gradient-to-br from-[#0c0c0e] to-[#161618] border border-[var(--border)] rounded-[40px] p-8 shadow-2xl overflow-hidden relative">
              <div className="flex items-center gap-4 mb-6">
                 <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-500">
                    <Activity size={20} />
                 </div>
                 <div>
                    <h4 className="text-sm font-black uppercase tracking-widest">Global Status</h4>
-                   <p className="text-[10px] text-gray-500 font-bold uppercase tracking-tighter">Cluster: Region-US-West</p>
+                   <p className="text-[10px] text-[var(--foreground-muted)] font-bold uppercase tracking-tighter">Cluster: Region-US-West</p>
                 </div>
              </div>
              <div className="space-y-4">
                 <div className="flex justify-between items-end">
-                   <span className="text-[10px] font-black text-gray-600 uppercase">Uptime</span>
+                   <span className="text-[10px] font-black text-[var(--foreground-subtle)] uppercase">Uptime</span>
                    <span className="text-sm font-black text-white">99.9%</span>
                 </div>
                 <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
@@ -247,14 +247,14 @@ export default function DashboardPage() {
 
 function StatCard({ title, value, icon, trend, isUp, color, description }) {
   const colors = {
-    blue: 'text-blue-500 bg-blue-500/10 border-blue-500/10',
+    blue: 'text-[var(--primary)] bg-[var(--primary-hover)]/10 border-[var(--primary-light)]',
     emerald: 'text-emerald-500 bg-emerald-500/10 border-emerald-500/10',
     purple: 'text-purple-500 bg-purple-500/10 border-purple-500/10',
     orange: 'text-orange-500 bg-orange-500/10 border-orange-500/10',
   };
 
   return (
-    <div className="p-8 rounded-[32px] bg-[#0c0c0e] border border-white/5 hover:border-blue-500/20 transition-all group relative overflow-hidden shadow-2xl">
+    <div className="p-8 rounded-[32px] bg-[var(--card)] border border-[var(--border)] hover:border-[var(--primary-light)] transition-all group relative overflow-hidden shadow-2xl">
       <div className="absolute top-0 right-0 w-32 h-32 bg-white/[0.01] rounded-full blur-3xl -mr-16 -mt-16" />
       
       <div className="flex items-center justify-between mb-8 relative z-10">
@@ -268,9 +268,9 @@ function StatCard({ title, value, icon, trend, isUp, color, description }) {
       </div>
       
       <div className="relative z-10">
-        <h4 className="text-gray-600 text-[10px] font-black uppercase tracking-widest mb-1">{title}</h4>
+        <h4 className="text-[var(--foreground-subtle)] text-[10px] font-black uppercase tracking-widest mb-1">{title}</h4>
         <div className="text-4xl font-black tracking-tighter mb-4">{typeof value === 'number' ? value.toLocaleString() : value}</div>
-        <p className="text-[10px] text-gray-500 font-medium leading-relaxed">{description}</p>
+        <p className="text-[10px] text-[var(--foreground-muted)] font-medium leading-relaxed">{description}</p>
       </div>
     </div>
   );
@@ -278,7 +278,7 @@ function StatCard({ title, value, icon, trend, isUp, color, description }) {
 
 function ActivityItem({ icon, title, time, desc, color }) {
   const iconColors = {
-    blue: 'text-blue-500 bg-blue-500/10 border-blue-500/10',
+    blue: 'text-[var(--primary)] bg-[var(--primary-hover)]/10 border-[var(--primary-light)]',
     emerald: 'text-emerald-500 bg-emerald-500/10 border-emerald-500/10',
     purple: 'text-purple-500 bg-purple-500/10 border-purple-500/10',
     orange: 'text-orange-500 bg-orange-500/10 border-orange-500/10',
@@ -291,10 +291,10 @@ function ActivityItem({ icon, title, time, desc, color }) {
       </div>
       <div className="flex-1 min-w-0">
         <div className="flex items-center justify-between mb-1">
-          <p className="text-sm font-black group-hover:text-blue-500 transition-colors truncate">{title}</p>
-          <span className="text-[9px] text-gray-700 font-black uppercase tracking-widest flex-shrink-0 ml-2">{time}</span>
+          <p className="text-sm font-black group-hover:text-[var(--primary)] transition-colors truncate">{title}</p>
+          <span className="text-[9px] text-[var(--foreground-subtle)] font-black uppercase tracking-widest flex-shrink-0 ml-2">{time}</span>
         </div>
-        <p className="text-[11px] text-gray-500 font-medium leading-relaxed line-clamp-2">{desc}</p>
+        <p className="text-[11px] text-[var(--foreground-muted)] font-medium leading-relaxed line-clamp-2">{desc}</p>
       </div>
     </div>
   );

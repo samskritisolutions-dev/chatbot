@@ -45,24 +45,24 @@ function RegisterContent() {
   return (
     <div className="min-h-screen bg-[#050506] text-white flex items-center justify-center p-6 relative overflow-hidden">
       {/* Background Decorative Elements */}
-      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-[var(--primary-light)] rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-600/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="w-full max-w-md relative z-10 animate-fade-in">
         {/* Logo Section */}
         <div className="flex flex-col items-center mb-10">
           <Link href="/" className="flex items-center gap-2 mb-6 hover:scale-105 transition-transform">
-            <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-600/20">
+            <div className="w-12 h-12 bg-[var(--primary)] rounded-2xl flex items-center justify-center shadow-lg shadow-[var(--sidebar-active-shadow)]">
               <Bot className="text-white" size={28} />
             </div>
             <span className="text-2xl font-bold tracking-tight">AntigravityAI</span>
           </Link>
           <h1 className="text-3xl font-black mb-2 text-center">Create your account</h1>
-          <p className="text-gray-500 text-sm text-center">Start building your AI workforce today.</p>
+          <p className="text-[var(--foreground-muted)] text-sm text-center">Start building your AI workforce today.</p>
         </div>
 
         {/* Form Card */}
-        <div className="bg-[#0c0c0e] p-8 rounded-[40px] border border-white/5 shadow-2xl">
+        <div className="bg-[var(--card)] p-8 rounded-[40px] border border-[var(--border)] shadow-2xl">
           {error && (
             <div className="mb-6 p-4 bg-red-500/10 border border-red-500/20 rounded-2xl text-red-400 text-xs font-medium text-center animate-shake">
               {error}
@@ -71,14 +71,14 @@ function RegisterContent() {
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="space-y-2">
-              <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest ml-1">Full Name</label>
+              <label className="text-[10px] font-bold text-[var(--foreground-muted)] uppercase tracking-widest ml-1">Full Name</label>
               <div className="relative group">
-                <User className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-blue-500 transition-colors" size={18} />
+                <User className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--foreground-muted)] group-focus-within:text-[var(--primary)] transition-colors" size={18} />
                 <input
                   required
                   type="text"
                   placeholder="John Doe"
-                  className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600/50 transition-all placeholder:text-gray-600"
+                  className="w-full bg-white/5 border border-[var(--border-strong)] rounded-2xl py-4 pl-12 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600/50 transition-all placeholder:text-[var(--foreground-subtle)]"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 />
@@ -86,14 +86,14 @@ function RegisterContent() {
             </div>
 
             <div className="space-y-2">
-              <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest ml-1">Email Address</label>
+              <label className="text-[10px] font-bold text-[var(--foreground-muted)] uppercase tracking-widest ml-1">Email Address</label>
               <div className="relative group">
-                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-blue-500 transition-colors" size={18} />
+                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--foreground-muted)] group-focus-within:text-[var(--primary)] transition-colors" size={18} />
                 <input
                   required
                   type="email"
                   placeholder="name@company.com"
-                  className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600/50 transition-all placeholder:text-gray-600"
+                  className="w-full bg-white/5 border border-[var(--border-strong)] rounded-2xl py-4 pl-12 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600/50 transition-all placeholder:text-[var(--foreground-subtle)]"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 />
@@ -101,14 +101,14 @@ function RegisterContent() {
             </div>
 
             <div className="space-y-2">
-              <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest ml-1">Password</label>
+              <label className="text-[10px] font-bold text-[var(--foreground-muted)] uppercase tracking-widest ml-1">Password</label>
               <div className="relative group">
-                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-blue-500 transition-colors" size={18} />
+                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--foreground-muted)] group-focus-within:text-[var(--primary)] transition-colors" size={18} />
                 <input
                   required
                   type="password"
                   placeholder="••••••••"
-                  className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600/50 transition-all placeholder:text-gray-600"
+                  className="w-full bg-white/5 border border-[var(--border-strong)] rounded-2xl py-4 pl-12 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600/50 transition-all placeholder:text-[var(--foreground-subtle)]"
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                 />
@@ -116,14 +116,14 @@ function RegisterContent() {
             </div>
 
             <div className="space-y-2">
-              <label className="text-[10px] font-bold text-gray-500 uppercase tracking-widest ml-1">Confirm Password</label>
+              <label className="text-[10px] font-bold text-[var(--foreground-muted)] uppercase tracking-widest ml-1">Confirm Password</label>
               <div className="relative group">
-                <ShieldCheck className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-blue-500 transition-colors" size={18} />
+                <ShieldCheck className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--foreground-muted)] group-focus-within:text-[var(--primary)] transition-colors" size={18} />
                 <input
                   required
                   type="password"
                   placeholder="••••••••"
-                  className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600/50 transition-all placeholder:text-gray-600"
+                  className="w-full bg-white/5 border border-[var(--border-strong)] rounded-2xl py-4 pl-12 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600/50 transition-all placeholder:text-[var(--foreground-subtle)]"
                   value={formData.password_confirmation}
                   onChange={(e) => setFormData({ ...formData, password_confirmation: e.target.value })}
                 />
@@ -133,7 +133,7 @@ function RegisterContent() {
             <button
               disabled={loading}
               type="submit"
-              className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 rounded-2xl shadow-xl shadow-blue-600/20 transition-all flex items-center justify-center gap-2 group mt-4"
+              className="w-full bg-[var(--primary)] hover:bg-blue-500 text-white font-bold py-4 rounded-2xl shadow-xl shadow-[var(--sidebar-active-shadow)] transition-all flex items-center justify-center gap-2 group mt-4"
             >
               {loading ? (
                 <Loader2 className="animate-spin" size={20} />
@@ -146,28 +146,28 @@ function RegisterContent() {
             </button>
 
             <div className="relative my-8">
-              <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-white/5"></div></div>
-              <div className="relative flex justify-center text-[10px] uppercase font-bold tracking-widest"><span className="bg-[#0c0c0e] px-4 text-gray-500">Or continue with</span></div>
+              <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-[var(--border)]"></div></div>
+              <div className="relative flex justify-center text-[10px] uppercase font-bold tracking-widest"><span className="bg-[var(--card)] px-4 text-[var(--foreground-muted)]">Or continue with</span></div>
             </div>
 
             <button
               type="button"
               onClick={handleGoogleLogin}
-              className="w-full bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 text-white font-bold py-4 rounded-2xl transition-all flex items-center justify-center gap-3 group"
+              className="w-full bg-white/[0.03] hover:bg-white/[0.08] border border-[var(--border-strong)] text-white font-bold py-4 rounded-2xl transition-all flex items-center justify-center gap-3 group"
             >
               <img src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png" alt="Google" className="w-5 h-5 group-hover:scale-110 transition-transform" />
               Continue with Google
             </button>
           </form>
 
-          <div className="mt-8 pt-8 border-t border-white/5 flex flex-col items-center gap-4">
-             <div className="flex items-center gap-2 text-xs font-bold text-blue-400/80 uppercase tracking-widest">
+          <div className="mt-8 pt-8 border-t border-[var(--border)] flex flex-col items-center gap-4">
+             <div className="flex items-center gap-2 text-xs font-bold text-[var(--primary)]/80 uppercase tracking-widest">
                 <Sparkles size={14} />
                 <span>14-day pro trial included</span>
              </div>
-             <p className="text-sm text-gray-500">
+             <p className="text-sm text-[var(--foreground-muted)]">
                Already have an account?{' '}
-               <Link href="/login" className="text-white font-bold hover:text-blue-500 transition-colors">
+               <Link href="/login" className="text-white font-bold hover:text-[var(--primary)] transition-colors">
                  Sign In
                </Link>
              </p>
@@ -175,7 +175,7 @@ function RegisterContent() {
         </div>
 
         {/* Footer Info */}
-        <p className="mt-10 text-center text-[10px] text-gray-600 uppercase tracking-widest font-medium">
+        <p className="mt-10 text-center text-[10px] text-[var(--foreground-subtle)] uppercase tracking-widest font-medium">
           By registering, you agree to our <br />
           <Link href="#" className="hover:text-gray-400">Terms of Service</Link> & <Link href="#" className="hover:text-gray-400">Privacy Policy</Link>
         </p>
@@ -186,7 +186,7 @@ function RegisterContent() {
 
 export default function Register() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-[#050506] flex items-center justify-center"><Loader2 className="animate-spin text-blue-500" size={40} /></div>}>
+    <Suspense fallback={<div className="min-h-screen bg-[#050506] flex items-center justify-center"><Loader2 className="animate-spin text-[var(--primary)]" size={40} /></div>}>
       <RegisterContent />
     </Suspense>
   );
