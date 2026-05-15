@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import api from '@/lib/api';
 import { usePathname, useRouter } from 'next/navigation';
@@ -12,11 +13,12 @@ import {
   Settings, 
   LogOut, 
   ChevronRight,
-  Sparkles,
   Menu,
   X,
   Users,
-  ShieldCheck
+  ShieldCheck,
+  Sun,
+  Moon
 } from 'lucide-react';
 
 export default function DashboardLayout({ children }) {
@@ -25,10 +27,22 @@ export default function DashboardLayout({ children }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [user, setUser] = useState(null);
+  const [theme, setTheme] = useState('dark');
 
   useEffect(() => {
     fetchUser();
+    // Read saved theme
+    const saved = localStorage.getItem('theme') || 'dark';
+    setTheme(saved);
+    document.documentElement.setAttribute('data-theme', saved);
   }, []);
+
+  const toggleTheme = () => {
+    const next = theme === 'dark' ? 'light' : 'dark';
+    setTheme(next);
+    localStorage.setItem('theme', next);
+    document.documentElement.setAttribute('data-theme', next);
+  };
 
   const fetchUser = async () => {
     try {
@@ -59,23 +73,31 @@ export default function DashboardLayout({ children }) {
 
   const SidebarContent = () => (
     <>
-      <div className="p-6 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-            <Sparkles size={18} className="text-white" />
-          </div>
-          {(isSidebarOpen || isMobileOpen) && (
-            <span className="font-bold text-xl tracking-tight">Antigravity</span>
-          )}
+      {/* Logo Area */}
+      <div className="p-5 flex items-center justify-between border-b" style={{ borderColor: 'var(--border)' }}>
+        <div className="flex items-center gap-3">
+          <Image 
+            src="/logo.svg" 
+            alt="Samskriti Solutions" 
+            width={140} 
+            height={40} 
+            className="h-9 w-auto"
+            style={{ filter: theme === 'dark' ? 'brightness(1.6) saturate(1.2)' : 'none' }}
+          />
         </div>
         {isMobileOpen && (
-          <button onClick={() => setIsMobileOpen(false)} className="p-2 hover:bg-white/5 rounded-lg lg:hidden">
+          <button 
+            onClick={() => setIsMobileOpen(false)} 
+            className="p-2 rounded-lg lg:hidden transition-colors"
+            style={{ color: 'var(--foreground-muted)' }}
+          >
             <X size={20} />
           </button>
         )}
       </div>
 
-      <nav className="flex-1 px-4 space-y-2 mt-8">
+      {/* Navigation */}
+      <nav className="flex-1 px-3 space-y-1 mt-6">
         {navItems.map((item) => {
           const isActive = pathname === item.path;
           return (
@@ -83,17 +105,28 @@ export default function DashboardLayout({ children }) {
               key={item.name} 
               href={item.path}
               onClick={() => setIsMobileOpen(false)}
-              className={`flex items-center gap-4 px-4 py-3 rounded-xl transition-all group ${
-                isActive 
-                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/20' 
-                  : 'text-gray-500 hover:text-white hover:bg-white/5'
-              }`}
+              className="flex items-center gap-3 px-4 py-3 rounded-xl transition-all group relative"
+              style={{
+                background: isActive ? 'var(--primary)' : 'transparent',
+                color: isActive ? '#ffffff' : 'var(--foreground-muted)',
+                boxShadow: isActive ? '0 4px 16px var(--sidebar-active-shadow)' : 'none',
+              }}
+              onMouseEnter={(e) => {
+                if (!isActive) {
+                  e.currentTarget.style.background = 'var(--primary-light)';
+                  e.currentTarget.style.color = 'var(--foreground)';
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!isActive) {
+                  e.currentTarget.style.background = 'transparent';
+                  e.currentTarget.style.color = 'var(--foreground-muted)';
+                }
+              }}
             >
-              <div className={`${isActive ? 'text-white' : 'group-hover:text-white'}`}>
-                {item.icon}
-              </div>
+              <div>{item.icon}</div>
               {(isSidebarOpen || isMobileOpen) && (
-                <span className="font-medium text-sm flex-1">{item.name}</span>
+                <span className="font-semibold text-sm flex-1">{item.name}</span>
               )}
               {isActive && (isSidebarOpen || isMobileOpen) && <ChevronRight size={14} />}
             </Link>
@@ -101,10 +134,32 @@ export default function DashboardLayout({ children }) {
         })}
       </nav>
 
-      <div className="p-4 mt-auto border-t border-white/5">
+      {/* Bottom: Theme Toggle + Logout */}
+      <div className="p-4 mt-auto space-y-2" style={{ borderTop: '1px solid var(--border)' }}>
+        {/* Theme Toggle */}
+        {(isSidebarOpen || isMobileOpen) && (
+          <button
+            onClick={toggleTheme}
+            className="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all text-sm font-medium"
+            style={{ color: 'var(--foreground-muted)' }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--primary-light)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
+          >
+            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            <span>{theme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>
+            <div className="ml-auto">
+              <button className="theme-toggle" aria-label="Toggle theme" />
+            </div>
+          </button>
+        )}
+
+        {/* Logout */}
         <button 
           onClick={handleLogout}
-          className="w-full flex items-center gap-4 px-4 py-3 text-red-400 hover:bg-red-400/5 rounded-xl transition-all font-medium text-sm"
+          className="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-medium text-sm"
+          style={{ color: 'var(--danger)' }}
+          onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(239,68,68,0.06)'; }}
+          onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
         >
           <LogOut size={20} />
           {(isSidebarOpen || isMobileOpen) && <span>Logout</span>}
@@ -114,29 +169,38 @@ export default function DashboardLayout({ children }) {
   );
 
   return (
-    <div className="min-h-screen bg-[#09090b] text-white flex">
+    <div className="min-h-screen flex" style={{ background: 'var(--background)', color: 'var(--foreground)' }}>
       {/* Mobile Backdrop */}
       {isMobileOpen && (
         <div 
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden"
+          className="fixed inset-0 z-40 lg:hidden"
+          style={{ background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(4px)' }}
           onClick={() => setIsMobileOpen(false)}
         />
       )}
 
       {/* Desktop Sidebar */}
       <aside 
-        className={`hidden lg:flex flex-col border-r border-white/5 bg-[#09090b] transition-all duration-300 fixed h-full z-30 ${
+        className={`hidden lg:flex flex-col fixed h-full z-30 transition-all duration-300 ${
           isSidebarOpen ? 'w-72' : 'w-20'
         }`}
+        style={{ 
+          background: 'var(--sidebar-bg)', 
+          borderRight: '1px solid var(--border)' 
+        }}
       >
         <SidebarContent />
       </aside>
 
-      {/* Mobile Sidebar (Drawer) */}
+      {/* Mobile Sidebar */}
       <aside 
-        className={`lg:hidden fixed inset-y-0 left-0 w-72 bg-[#09090b] border-r border-white/5 z-50 transition-transform duration-300 transform ${
+        className={`lg:hidden fixed inset-y-0 left-0 w-72 z-50 transition-transform duration-300 transform ${
           isMobileOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
+        style={{ 
+          background: 'var(--sidebar-bg)', 
+          borderRight: '1px solid var(--border)' 
+        }}
       >
         <SidebarContent />
       </aside>
@@ -148,37 +212,73 @@ export default function DashboardLayout({ children }) {
         }`}
       >
         {/* Header */}
-        <header className="h-20 border-b border-white/5 flex items-center justify-between px-4 lg:px-8 sticky top-0 bg-[#09090b]/80 backdrop-blur-md z-20">
+        <header 
+          className="h-16 flex items-center justify-between px-4 lg:px-8 sticky top-0 z-20"
+          style={{ 
+            background: 'var(--header-bg)', 
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+            borderBottom: '1px solid var(--border)' 
+          }}
+        >
           <div className="flex items-center gap-4">
             {/* Desktop Toggle */}
             <button 
               onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-              className="hidden lg:p-2 lg:hover:bg-white/5 lg:rounded-lg lg:transition-all lg:block"
+              className="hidden lg:block p-2 rounded-lg transition-all"
+              style={{ color: 'var(--foreground-muted)' }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--primary-light)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
             >
-              {isSidebarOpen ? <X size={20} /> : <Menu size={20} />}
+              {isSidebarOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
             
             {/* Mobile Menu Trigger */}
             <button 
               onClick={() => setIsMobileOpen(true)}
-              className="p-2 hover:bg-white/5 rounded-lg lg:hidden"
+              className="p-2 rounded-lg lg:hidden transition-all"
+              style={{ color: 'var(--foreground-muted)' }}
             >
               <Menu size={20} />
             </button>
 
-            <span className="font-bold lg:hidden">Antigravity</span>
+            <span className="font-bold lg:hidden" style={{ color: 'var(--foreground)' }}>
+              Samskriti
+            </span>
           </div>
 
           <div className="flex items-center gap-3 lg:gap-4">
+            {/* Desktop theme toggle (compact) */}
+            <button
+              onClick={toggleTheme}
+              className="hidden sm:flex p-2 rounded-lg transition-all"
+              style={{ color: 'var(--foreground-muted)' }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--primary-light)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
+              title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+            >
+              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+
             <div className="text-right hidden sm:block">
-              <p className="text-sm font-bold leading-none mb-1">{user?.name || 'Account'}</p>
-              <p className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">
-                {user?.plan ? `${user.plan} Plan` : 'Standard'}
+              <p className="text-sm font-bold leading-none mb-1" style={{ color: 'var(--foreground)' }}>
+                {user?.name || 'Account'}
+              </p>
+              <p className="text-[10px] uppercase tracking-widest font-bold" style={{ color: 'var(--foreground-subtle)' }}>
+                {user?.plan ? `${user.plan} Plan` : 'Free Plan'}
               </p>
             </div>
-            <div className="w-9 h-9 lg:w-10 lg:h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 border border-white/10 p-0.5">
-              <div className="w-full h-full rounded-full bg-[#09090b] flex items-center justify-center font-black text-[10px] uppercase tracking-tighter">
-                {user?.name ? user.name.split(' ').map(n => n[0]).join('') : 'AI'}
+            
+            {/* Avatar */}
+            <div 
+              className="w-9 h-9 lg:w-10 lg:h-10 rounded-full p-0.5"
+              style={{ background: 'linear-gradient(135deg, var(--primary), var(--accent))' }}
+            >
+              <div 
+                className="w-full h-full rounded-full flex items-center justify-center font-black text-[10px] uppercase tracking-tighter"
+                style={{ background: 'var(--background)', color: 'var(--foreground)' }}
+              >
+                {user?.name ? user.name.split(' ').map(n => n[0]).join('') : 'SS'}
               </div>
             </div>
           </div>

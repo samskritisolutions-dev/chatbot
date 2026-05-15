@@ -1,32 +1,182 @@
 @import "tailwindcss";
 
-:root {
-  --background: #0a0a0b;
-  --foreground: #f8fafc;
-  --primary: #3b82f6;
-  --primary-hover: #2563eb;
-  --accent: #6366f1;
-  --card: #161618;
-  --border: #27272a;
+/* ═══════════════════════════════════════════════════════
+   SAMSKRITI SOLUTIONS — Design Token System
+   Brand: Maroon · Orange · Gold
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Dark Theme (default) ─────────────────────────────── */
+:root,
+[data-theme="dark"] {
+  --background: #0c0a09;
+  --background-secondary: #1c1917;
+  --foreground: #fafaf9;
+  --foreground-muted: #a8a29e;
+  --foreground-subtle: #78716c;
+
+  /* Brand Primary — Maroon */
+  --primary: #9f3536;
+  --primary-hover: #b93d3e;
+  --primary-light: rgba(159, 53, 54, 0.15);
+  --primary-glow: rgba(159, 53, 54, 0.35);
+
+  /* Brand Accent — Orange / Gold */
+  --accent: #d73c18;
+  --accent-hover: #e5501f;
+  --accent-light: rgba(215, 60, 24, 0.15);
+  --gold: #eba400;
+  --gold-light: rgba(235, 164, 0, 0.15);
+
+  /* Surfaces */
+  --card: #1c1917;
+  --card-hover: #292524;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+
+  /* Sidebar */
+  --sidebar-bg: #0c0a09;
+  --sidebar-active: var(--primary);
+  --sidebar-active-shadow: rgba(159, 53, 54, 0.25);
+
+  /* Header */
+  --header-bg: rgba(12, 10, 9, 0.85);
+
+  /* Scrollbar */
+  --scrollbar-track: #0c0a09;
+  --scrollbar-thumb: #292524;
+  --scrollbar-thumb-hover: #44403c;
+
+  /* Status */
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --info: #3b82f6;
+
+  /* Avatar gradient */
+  --avatar-from: var(--primary);
+  --avatar-to: var(--accent);
+
+  /* Misc */
+  --glass-bg: rgba(28, 25, 23, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  --input-bg: rgba(255, 255, 255, 0.04);
+  --badge-bg: rgba(159, 53, 54, 0.12);
+  --badge-text: #e87c7d;
 }
+
+/* ── Light Theme ──────────────────────────────────────── */
+[data-theme="light"] {
+  --background: #faf8f6;
+  --background-secondary: #ffffff;
+  --foreground: #1c1917;
+  --foreground-muted: #57534e;
+  --foreground-subtle: #a8a29e;
+
+  /* Brand Primary — Maroon (richer in light mode) */
+  --primary: #7d2b2c;
+  --primary-hover: #6b2324;
+  --primary-light: rgba(125, 43, 44, 0.08);
+  --primary-glow: rgba(125, 43, 44, 0.18);
+
+  /* Brand Accent */
+  --accent: #c43516;
+  --accent-hover: #a82d12;
+  --accent-light: rgba(196, 53, 22, 0.08);
+  --gold: #d49200;
+  --gold-light: rgba(212, 146, 0, 0.1);
+
+  /* Surfaces */
+  --card: #ffffff;
+  --card-hover: #f5f0ed;
+  --border: rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.14);
+
+  /* Sidebar */
+  --sidebar-bg: #ffffff;
+  --sidebar-active: var(--primary);
+  --sidebar-active-shadow: rgba(125, 43, 44, 0.2);
+
+  /* Header */
+  --header-bg: rgba(250, 248, 246, 0.88);
+
+  /* Scrollbar */
+  --scrollbar-track: #f5f0ed;
+  --scrollbar-thumb: #d6d3d1;
+  --scrollbar-thumb-hover: #a8a29e;
+
+  /* Status */
+  --success: #16a34a;
+  --warning: #d97706;
+  --danger: #dc2626;
+  --info: #2563eb;
+
+  /* Avatar gradient */
+  --avatar-from: var(--primary);
+  --avatar-to: var(--accent);
+
+  /* Misc */
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(0, 0, 0, 0.06);
+  --input-bg: rgba(0, 0, 0, 0.03);
+  --badge-bg: rgba(125, 43, 44, 0.08);
+  --badge-text: #7d2b2c;
+}
+
+/* ═══════════════════════════════════════════════════════
+   BASE STYLES
+   ═══════════════════════════════════════════════════════ */
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: 'Inter', -apple-system, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Glassmorphism utility */
-.glass {
-  background: rgba(22, 22, 24, 0.7);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+/* Smooth transitions for theme switching */
+*, *::before, *::after {
+  transition-property: background-color, border-color, box-shadow;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
 }
+/* Exclude elements that shouldn't transition (e.g. animations) */
+.no-transition, .no-transition * {
+  transition: none !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   GLASSMORPHISM
+   ═══════════════════════════════════════════════════════ */
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+}
+
+/* ═══════════════════════════════════════════════════════
+   BRAND GRADIENTS
+   ═══════════════════════════════════════════════════════ */
 
 .gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-blue-600 to-purple-600;
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(135deg, #9f3536, #d73c18, #eba400);
 }
+
+.gradient-brand {
+  background: linear-gradient(135deg, #7d2b2c, #d73c18, #eba400);
+}
+
+.gradient-brand-subtle {
+  background: linear-gradient(135deg, var(--primary-light), var(--accent-light), var(--gold-light));
+}
+
+/* ═══════════════════════════════════════════════════════
+   ANIMATIONS
+   ═══════════════════════════════════════════════════════ */
+
 @keyframes fade-in {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -40,6 +190,16 @@ body {
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-20px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 var(--primary-glow); }
+  50% { box-shadow: 0 0 20px 4px var(--primary-glow); }
 }
 
 .animate-fade-in {
@@ -58,19 +218,81 @@ body {
   animation: float 6s ease-in-out infinite 3s;
 }
 
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
 
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
 
-/* Custom scrollbar */
+/* ═══════════════════════════════════════════════════════
+   SCROLLBAR
+   ═══════════════════════════════════════════════════════ */
+
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #050506;
+  background: var(--scrollbar-track);
 }
 ::-webkit-scrollbar-thumb {
-  background: #1a1a1c;
+  background: var(--scrollbar-thumb);
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3f3f46;
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+/* ═══════════════════════════════════════════════════════
+   CUSTOM SCROLLBAR (for chat areas)
+   ═══════════════════════════════════════════════════════ */
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 10px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   THEME TOGGLE BUTTON
+   ═══════════════════════════════════════════════════════ */
+
+.theme-toggle {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  border-radius: 12px;
+  background: var(--input-bg);
+  border: 1px solid var(--border-strong);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.theme-toggle::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #eba400, #f0bb00);
+  transition: transform 0.3s ease, background 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+[data-theme="dark"] .theme-toggle::after {
+  transform: translateX(20px);
+  background: linear-gradient(135deg, #78716c, #a8a29e);
 }
