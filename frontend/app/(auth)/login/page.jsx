@@ -64,11 +64,12 @@ function LoginContent() {
       <div className="w-full max-w-md relative z-10 animate-fade-in">
         {/* Logo Section */}
         <div className="flex flex-col items-center mb-10">
-          <Link href="/" className="flex items-center gap-2 mb-6 hover:scale-105 transition-transform">
-            <div className="w-12 h-12 bg-[var(--primary)] rounded-2xl flex items-center justify-center shadow-lg shadow-[var(--sidebar-active-shadow)]">
-              <Bot className="text-[var(--foreground)]" size={28} />
-            </div>
-            <span className="text-2xl font-bold tracking-tight">AntigravityAI</span>
+          <Link href="/" className="flex items-center justify-center mb-6 hover:scale-105 transition-transform">
+            <img 
+              src="/logo.svg" 
+              alt="Samskriti Solutions" 
+              className="h-12 w-auto object-contain brand-logo"
+            />
           </Link>
           <h1 className="text-3xl font-black mb-2 text-center">Welcome back</h1>
           <p className="text-[var(--foreground-muted)] text-sm text-center">Log in to manage your AI workforce.</p>
