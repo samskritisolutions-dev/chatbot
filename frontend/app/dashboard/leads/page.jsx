@@ -119,12 +119,12 @@ export default function LeadsPage() {
 
       {loading ? (
         <div className="h-96 flex flex-col items-center justify-center gap-4">
-           <div className="w-16 h-16 border-4 border-blue-600/20 border-t-blue-600 rounded-full animate-spin" />
+           <div className="w-16 h-16 border-4 border-[var(--primary)]/20 border-t-[var(--primary)] rounded-full animate-spin" />
            <p className="text-[var(--foreground-muted)] font-black text-[10px] uppercase tracking-[0.2em] animate-pulse">Syncing Database...</p>
         </div>
       ) : filteredLeads.length === 0 ? (
         <div className="bg-[var(--card)] rounded-[40px] border border-[var(--border)] p-24 text-center">
-          <div className="w-24 h-24 bg-[var(--primary-light)] rounded-[32px] border border-[var(--primary-light)] flex items-center justify-center text-[var(--primary)] mx-auto mb-8 shadow-inner shadow-blue-500/5">
+          <div className="w-24 h-24 bg-[var(--primary-light)] rounded-[32px] border border-[var(--primary-light)] flex items-center justify-center text-[var(--primary)] mx-auto mb-8 shadow-inner shadow-[var(--primary-light)]">
             <Database size={48} className="animate-float" />
           </div>
           <h2 className="text-2xl font-black text-white mb-3">Neural Storage Empty</h2>
@@ -157,7 +157,7 @@ export default function LeadsPage() {
                   <tr key={lead.id} className="hover:bg-white/[0.01] transition-all duration-300 group">
                     <td className="px-10 py-7">
                       <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-600/20 to-purple-600/20 border border-[var(--border)] flex items-center justify-center text-[var(--primary)] font-black text-sm group-hover:scale-110 transition-transform duration-500 shadow-lg shadow-black/20">
+                        <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[var(--primary-light)] to-[var(--accent-light)] border border-[var(--border)] flex items-center justify-center text-[var(--primary)] font-black text-sm group-hover:scale-110 transition-transform duration-500 shadow-lg shadow-black/20">
                           {lead.name.charAt(0).toUpperCase()}
                         </div>
                         <div>

@@ -91,7 +91,7 @@ function LoginContent() {
                   required
                   type="email"
                   placeholder="name@company.com"
-                  className="w-full bg-white/5 border border-[var(--border-strong)] rounded-2xl py-4 pl-12 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600/50 transition-all placeholder:text-[var(--foreground-subtle)]"
+                  className="w-full bg-white/5 border border-[var(--border-strong)] rounded-2xl py-4 pl-12 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/50 transition-all placeholder:text-[var(--foreground-subtle)]"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 />
@@ -109,7 +109,7 @@ function LoginContent() {
                   required
                   type="password"
                   placeholder="••••••••"
-                  className="w-full bg-white/5 border border-[var(--border-strong)] rounded-2xl py-4 pl-12 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600/50 transition-all placeholder:text-[var(--foreground-subtle)]"
+                  className="w-full bg-white/5 border border-[var(--border-strong)] rounded-2xl py-4 pl-12 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/50 transition-all placeholder:text-[var(--foreground-subtle)]"
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                 />
@@ -119,7 +119,7 @@ function LoginContent() {
             <button
               disabled={loading}
               type="submit"
-              className="w-full bg-[var(--primary)] hover:bg-blue-500 text-white font-bold py-4 rounded-2xl shadow-xl shadow-[var(--sidebar-active-shadow)] transition-all flex items-center justify-center gap-2 group mt-4"
+              className="w-full bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-white font-bold py-4 rounded-2xl shadow-xl shadow-[var(--sidebar-active-shadow)] transition-all flex items-center justify-center gap-2 group mt-4"
             >
               {loading ? (
                 <Loader2 className="animate-spin" size={20} />

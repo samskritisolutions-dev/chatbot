@@ -264,7 +264,7 @@ export default function SettingsPage() {
 
             {activeTab === 'billing' && (
               <div className="space-y-10 animate-fade-in text-center py-12">
-                 <div className="w-24 h-24 bg-[var(--primary-light)] rounded-[32px] border border-[var(--primary-light)] flex items-center justify-center text-[var(--primary)] mx-auto mb-8 shadow-inner shadow-blue-500/5">
+                 <div className="w-24 h-24 bg-[var(--primary-light)] rounded-[32px] border border-[var(--primary-light)] flex items-center justify-center text-[var(--primary)] mx-auto mb-8 shadow-inner shadow-[var(--primary-light)]">
                    <CreditCard size={48} className="animate-float" />
                  </div>
                  <div>
@@ -313,7 +313,7 @@ function TabButton({ active, onClick, icon, label }) {
   return (
     <button 
       onClick={onClick}
-      className={`w-full flex items-center justify-between px-6 py-5 rounded-[24px] transition-all group ${active ? 'bg-[var(--primary)] text-white shadow-2xl shadow-[var(--sidebar-active-shadow)] border border-blue-500' : 'text-[var(--foreground-muted)] hover:bg-[var(--card)] hover:text-white border border-transparent'}`}
+      className={`w-full flex items-center justify-between px-6 py-5 rounded-[24px] transition-all group ${active ? 'bg-[var(--primary)] text-white shadow-2xl shadow-[var(--sidebar-active-shadow)] border border-[var(--primary)]' : 'text-[var(--foreground-muted)] hover:bg-[var(--card)] hover:text-white border border-transparent'}`}
     >
       <div className="flex items-center gap-4">
         <div className={`transition-transform duration-500 ${active ? 'scale-110' : 'group-hover:scale-110'}`}>

@@ -18,12 +18,12 @@ import {
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#050506] text-white selection:bg-blue-500/30 selection:text-blue-200">
+    <div className="min-h-screen bg-[#050506] text-white selection:bg-[var(--primary)]/30 selection:text-[var(--foreground)]">
       {/* Background Decorative Elements */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[var(--primary-light)] rounded-full blur-[140px] opacity-50" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-purple-600/10 rounded-full blur-[140px] opacity-50" />
-        <div className="absolute top-[20%] right-[10%] w-[30%] h-[30%] bg-blue-400/5 rounded-full blur-[100px]" />
+        <div className="absolute top-[20%] right-[10%] w-[30%] h-[30%] bg-[var(--primary-light)] rounded-full blur-[100px]" />
       </div>
 
       {/* Navbar */}
@@ -44,7 +44,7 @@ export default function Home() {
 
           <div className="flex items-center gap-4">
             <Link href="/login" className="text-sm font-medium text-gray-400 hover:text-white transition-colors">Sign In</Link>
-            <Link href="/register" className="px-5 py-2.5 bg-[var(--primary)] hover:bg-blue-500 text-white text-sm font-bold rounded-xl transition-all shadow-lg shadow-[var(--sidebar-active-shadow)]">
+            <Link href="/register" className="px-5 py-2.5 bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-white text-sm font-bold rounded-xl transition-all shadow-lg shadow-[var(--sidebar-active-shadow)]">
               Get Started
             </Link>
           </div>
@@ -54,14 +54,14 @@ export default function Home() {
       <main className="relative pt-32">
         {/* Hero Section */}
         <section className="px-6 pb-24 text-center max-w-5xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--primary-light)] border border-[var(--primary-light)] text-[var(--primary)] text-[11px] font-bold uppercase tracking-widest mb-8 animate-fade-in shadow-xl shadow-blue-500/5">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--primary-light)] border border-[var(--primary-light)] text-[var(--primary)] text-[11px] font-bold uppercase tracking-widest mb-8 animate-fade-in shadow-xl shadow-[var(--primary-light)]">
             <Sparkles size={14} />
             <span>Next-Gen GPT-4o Integration</span>
           </div>
           
           <h1 className="text-6xl md:text-[90px] font-black leading-[1.05] tracking-tight mb-8 animate-fade-in [text-wrap:balance]">
             Empower your site with <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-600 to-purple-600">Autonomous AI</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] via-[var(--accent)] to-[var(--gold)]">Autonomous AI</span>
           </h1>
           
           <p className="text-gray-400 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed animate-fade-in opacity-90">
@@ -82,14 +82,14 @@ export default function Home() {
           <div className="mt-24 relative p-4 bg-white/5 rounded-[40px] border border-[var(--border-strong)] shadow-2xl animate-fade-in">
             <div className="bg-[var(--card)] rounded-[32px] overflow-hidden border border-[var(--border)] aspect-video flex items-center justify-center">
               <div className="flex flex-col items-center gap-4 text-[var(--foreground-muted)]">
-                <div className="w-20 h-20 bg-blue-600/20 rounded-full flex items-center justify-center animate-pulse">
+                <div className="w-20 h-20 bg-[var(--primary-light)] rounded-full flex items-center justify-center animate-pulse">
                    <Monitor size={40} className="text-[var(--primary)]" />
                 </div>
                 <p className="font-mono text-sm uppercase tracking-widest">Platform Preview Interface</p>
               </div>
             </div>
             {/* Floating Decorative Elements */}
-            <div className="absolute -top-12 -left-12 p-6 bg-blue-600/20 backdrop-blur-2xl rounded-3xl border border-[var(--border-strong)] hidden lg:block animate-float">
+            <div className="absolute -top-12 -left-12 p-6 bg-[var(--primary-light)] backdrop-blur-2xl rounded-3xl border border-[var(--border-strong)] hidden lg:block animate-float">
                <BrainCircuit className="text-[var(--primary)]" size={32} />
             </div>
             <div className="absolute -bottom-12 -right-12 p-6 bg-purple-600/20 backdrop-blur-2xl rounded-3xl border border-[var(--border-strong)] hidden lg:block animate-float-delayed">
@@ -178,7 +178,7 @@ export default function Home() {
 
         {/* CTA Section */}
         <section className="px-6 py-32">
-          <div className="max-w-5xl mx-auto p-12 lg:p-20 bg-gradient-to-br from-blue-600 to-purple-700 rounded-[40px] text-center relative overflow-hidden shadow-2xl shadow-[var(--sidebar-active-shadow)]">
+          <div className="max-w-5xl mx-auto p-12 lg:p-20 bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] rounded-[40px] text-center relative overflow-hidden shadow-2xl shadow-[var(--sidebar-active-shadow)]">
              <div className="relative z-10">
                <h2 className="text-4xl md:text-6xl font-black mb-8">Ready to Automate <br /> Your Business?</h2>
                <Link href="/register" className="inline-flex items-center gap-2 px-10 py-5 bg-white text-black font-black rounded-2xl hover:scale-105 transition-all shadow-xl">
@@ -236,7 +236,7 @@ function FeatureCard({ icon, title, description }) {
 
 function PricingCard({ name, price, description, features, buttonText, highlighted = false }) {
   return (
-    <div className={`p-10 rounded-[40px] border flex flex-col transition-all hover:scale-[1.02] ${highlighted ? 'bg-[var(--primary)] border-blue-400 shadow-2xl shadow-blue-600/30 text-white' : 'bg-white/[0.02] border-[var(--border)] text-gray-300'}`}>
+    <div className={`p-10 rounded-[40px] border flex flex-col transition-all hover:scale-[1.02] ${highlighted ? 'bg-[var(--primary)] border-[var(--primary)] shadow-2xl shadow-[var(--sidebar-active-shadow)] text-white' : 'bg-white/[0.02] border-[var(--border)] text-gray-300'}`}>
       <div className="mb-10">
         <h3 className={`text-lg font-black uppercase tracking-widest mb-4 ${highlighted ? 'text-white' : 'text-[var(--primary)]'}`}>{name}</h3>
         <div className="flex items-baseline gap-1 mb-4">
@@ -257,7 +257,7 @@ function PricingCard({ name, price, description, features, buttonText, highlight
 
       <Link 
         href="/register" 
-        className={`w-full py-4 rounded-2xl font-black text-center transition-all ${highlighted ? 'bg-white text-blue-600 hover:bg-gray-100' : 'bg-white/5 hover:bg-white/10 text-white'}`}
+        className={`w-full py-4 rounded-2xl font-black text-center transition-all ${highlighted ? 'bg-white text-[var(--primary)] hover:bg-gray-100' : 'bg-white/5 hover:bg-white/10 text-white'}`}
       >
         {buttonText}
       </Link>

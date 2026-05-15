@@ -224,7 +224,7 @@ function TrainingContent() {
                   <select 
                     value={selectedBotId}
                     onChange={(e) => setSelectedBotId(e.target.value)}
-                    className="w-full bg-[var(--card-hover)] text-white border border-[var(--border-strong)] rounded-2xl py-4 pl-12 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600/50 appearance-none font-bold"
+                    className="w-full bg-[var(--card-hover)] text-white border border-[var(--border-strong)] rounded-2xl py-4 pl-12 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/50 appearance-none font-bold"
                   >
                     {bots.length === 0 ? (
                       <option value="">No Agents Available</option>
@@ -244,21 +244,21 @@ function TrainingContent() {
                  <div className="grid grid-cols-1 gap-2">
                     <button 
                       onClick={() => setActiveTab('files')}
-                      className={`flex items-center gap-3 p-4 rounded-2xl transition-all border ${activeTab === 'files' ? 'bg-[var(--primary)] text-white border-blue-500 shadow-xl shadow-[var(--sidebar-active-shadow)]' : 'bg-[var(--input-bg)] text-gray-400 border-[var(--border)] hover:bg-white/5'}`}
+                      className={`flex items-center gap-3 p-4 rounded-2xl transition-all border ${activeTab === 'files' ? 'bg-[var(--primary)] text-white border-[var(--primary)] shadow-xl shadow-[var(--sidebar-active-shadow)]' : 'bg-[var(--input-bg)] text-gray-400 border-[var(--border)] hover:bg-white/5'}`}
                     >
                       <Upload size={18} />
                       <span className="text-xs font-bold uppercase tracking-widest">Documents</span>
                     </button>
                     <button 
                       onClick={() => setActiveTab('urls')}
-                      className={`flex items-center gap-3 p-4 rounded-2xl transition-all border ${activeTab === 'urls' ? 'bg-[var(--primary)] text-white border-blue-500 shadow-xl shadow-[var(--sidebar-active-shadow)]' : 'bg-[var(--input-bg)] text-gray-400 border-[var(--border)] hover:bg-white/5'}`}
+                      className={`flex items-center gap-3 p-4 rounded-2xl transition-all border ${activeTab === 'urls' ? 'bg-[var(--primary)] text-white border-[var(--primary)] shadow-xl shadow-[var(--sidebar-active-shadow)]' : 'bg-[var(--input-bg)] text-gray-400 border-[var(--border)] hover:bg-white/5'}`}
                     >
                       <Globe size={18} />
                       <span className="text-xs font-bold uppercase tracking-widest">Website Crawler</span>
                     </button>
                     <button 
                       onClick={() => setActiveTab('text')}
-                      className={`flex items-center gap-3 p-4 rounded-2xl transition-all border ${activeTab === 'text' ? 'bg-[var(--primary)] text-white border-blue-500 shadow-xl shadow-[var(--sidebar-active-shadow)]' : 'bg-[var(--input-bg)] text-gray-400 border-[var(--border)] hover:bg-white/5'}`}
+                      className={`flex items-center gap-3 p-4 rounded-2xl transition-all border ${activeTab === 'text' ? 'bg-[var(--primary)] text-white border-[var(--primary)] shadow-xl shadow-[var(--sidebar-active-shadow)]' : 'bg-[var(--input-bg)] text-gray-400 border-[var(--border)] hover:bg-white/5'}`}
                     >
                       <Type size={18} />
                       <span className="text-xs font-bold uppercase tracking-widest">Direct Input</span>
@@ -269,12 +269,12 @@ function TrainingContent() {
           </div>
 
           {/* Quick Stats Card */}
-          <div className="bg-gradient-to-br from-blue-600 to-purple-700 p-8 rounded-[32px] shadow-2xl relative overflow-hidden group">
+          <div className="bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] p-8 rounded-[32px] shadow-2xl relative overflow-hidden group">
              <div className="absolute top-[-20%] right-[-10%] w-40 h-40 bg-white/10 rounded-full blur-2xl group-hover:scale-110 transition-transform duration-700" />
              <div className="relative z-10">
                 <BookOpen className="text-white/40 mb-4" size={32} />
                 <h3 className="text-xl font-black text-white mb-2">Neural Indexing</h3>
-                <p className="text-blue-100 text-xs font-medium leading-relaxed mb-6">Your data is converted into high-dimensional vector embeddings for instant retrieval.</p>
+                <p className="text-white/80 text-xs font-medium leading-relaxed mb-6">Your data is converted into high-dimensional vector embeddings for instant retrieval.</p>
                 <div className="px-4 py-2 bg-black/20 rounded-xl inline-block text-[10px] font-black text-white uppercase tracking-widest">
                    Enhanced LLM Ready
                 </div>
@@ -303,7 +303,7 @@ function TrainingContent() {
                     onDragOver={handleDrag}
                     onDrop={handleDrop}
                     className={`relative border-2 border-dashed rounded-[40px] p-16 text-center transition-all cursor-pointer group ${
-                      dragActive ? 'border-blue-600 bg-[var(--primary-light)] scale-[0.99]' : 'border-[var(--border)] hover:border-[var(--primary-light)] hover:bg-[var(--primary-hover)]/[0.02]'
+                      dragActive ? 'border-[var(--primary)] bg-[var(--primary-light)] scale-[0.99]' : 'border-[var(--border)] hover:border-[var(--primary-light)] hover:bg-[var(--primary-hover)]/[0.02]'
                     }`}
                   >
                     {isUploading && (

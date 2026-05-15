@@ -209,7 +209,7 @@ export default function ConversationsPage() {
                 >
                   <ChevronLeft size={24} />
                 </button>
-                <div className="w-12 h-12 rounded-2xl bg-[var(--primary-light)] flex items-center justify-center text-[var(--primary)] border border-[var(--primary-light)] shadow-lg shadow-blue-600/10">
+                <div className="w-12 h-12 rounded-2xl bg-[var(--primary-light)] flex items-center justify-center text-[var(--primary)] border border-[var(--primary-light)] shadow-lg shadow-[var(--sidebar-active-shadow)]">
                   <MessageSquare size={24} />
                 </div>
                 <div className="truncate">
@@ -262,7 +262,7 @@ export default function ConversationsPage() {
                     {msg.role === 'user' ? <User size={20} /> : <Bot size={20} />}
                   </div>
                   <div className={`group relative max-w-[80%] lg:max-w-xl p-5 lg:p-6 rounded-[28px] ${
-                    msg.role === 'user' ? 'bg-[var(--input-bg)] text-gray-200 rounded-tl-none border border-[var(--border)]' : 'bg-[var(--primary-light)] text-white rounded-tr-none border border-[var(--primary-light)] shadow-xl shadow-blue-600/5'
+                    msg.role === 'user' ? 'bg-[var(--input-bg)] text-gray-200 rounded-tl-none border border-[var(--border)]' : 'bg-[var(--primary-light)] text-white rounded-tr-none border border-[var(--primary-light)] shadow-xl shadow-[var(--primary-light)]'
                   }`}>
                     <p className="text-[13px] lg:text-sm font-medium leading-relaxed">{msg.message}</p>
                     <div className={`absolute bottom-[-24px] flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity ${msg.role === 'user' ? 'left-0' : 'right-0'}`}>
@@ -322,7 +322,7 @@ export default function ConversationsPage() {
           </>
         ) : (
           <div className="flex-1 flex flex-col items-center justify-center text-center p-24">
-            <div className="w-32 h-32 rounded-[40px] bg-[var(--primary-light)] border border-[var(--primary-light)] flex items-center justify-center text-[var(--primary)] mb-10 shadow-inner shadow-blue-500/5 relative">
+            <div className="w-32 h-32 rounded-[40px] bg-[var(--primary-light)] border border-[var(--primary-light)] flex items-center justify-center text-[var(--primary)] mb-10 shadow-inner shadow-[var(--primary-light)] relative">
                <div className="absolute inset-0 bg-[var(--primary-hover)]/5 blur-2xl rounded-full" />
                <MessageSquare size={56} className="relative z-10 animate-float" />
             </div>

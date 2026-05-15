@@ -98,7 +98,7 @@ export default function WidgetPage() {
           <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} animate-slide-up`}>
             <div className={`max-w-[85%] p-3 rounded-2xl text-sm shadow-sm ${
               msg.role === 'user' 
-                ? 'bg-blue-600 text-white rounded-tr-none' 
+                ? 'bg-[var(--primary)] text-white rounded-tr-none' 
                 : 'bg-white border border-gray-100 text-gray-800 rounded-tl-none'
             }`}>
               {msg.message}
@@ -123,14 +123,14 @@ export default function WidgetPage() {
           <input 
             type="text" 
             placeholder="Type your message..."
-            className="w-full bg-gray-100 border-none rounded-xl py-3 pl-4 pr-12 text-sm focus:ring-2 focus:ring-blue-500/20 transition-all outline-none"
+            className="w-full bg-gray-100 border-none rounded-xl py-3 pl-4 pr-12 text-sm focus:ring-2 focus:ring-[var(--primary)]/20 transition-all outline-none"
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
           <button 
             type="submit"
             disabled={!input.trim() || loading}
-            className="absolute right-2 p-2 text-blue-600 hover:scale-110 disabled:opacity-30 disabled:scale-100 transition-all"
+            className="absolute right-2 p-2 text-[var(--primary)] hover:scale-110 disabled:opacity-30 disabled:scale-100 transition-all"
           >
             <Send size={20} />
           </button>

@@ -85,7 +85,7 @@ export default function BotsPage() {
 
       {/* Search & Filter Bar */}
       <div className="relative group">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-purple-600/5 rounded-2xl blur-xl opacity-0 group-focus-within:opacity-100 transition-opacity" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[var(--primary-light)] to-[var(--accent-light)] rounded-2xl blur-xl opacity-0 group-focus-within:opacity-100 transition-opacity" />
         <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-[var(--foreground-muted)] group-focus-within:text-[var(--primary)] transition-colors" size={20} />
         <input 
           type="text" 
@@ -98,7 +98,7 @@ export default function BotsPage() {
 
       {loading ? (
         <div className="h-96 flex flex-col items-center justify-center gap-4">
-          <div className="w-16 h-16 border-4 border-blue-600/20 border-t-blue-600 rounded-full animate-spin" />
+          <div className="w-16 h-16 border-4 border-[var(--primary)]/20 border-t-[var(--primary)] rounded-full animate-spin" />
           <p className="text-[var(--foreground-muted)] font-bold text-xs uppercase tracking-widest animate-pulse">Initializing Neural Links...</p>
         </div>
       ) : filteredBots.length === 0 ? (
@@ -165,7 +165,7 @@ function BotCard({ bot, onDelete, onEmbed, onAppearance }) {
       
       <div className="relative p-8 rounded-[32px] bg-[var(--card)] border border-[var(--border)] group-hover:border-[var(--primary-light)] transition-all duration-300">
         <div className="flex items-start justify-between mb-8">
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-600/10 to-purple-600/10 border border-[var(--border)] flex items-center justify-center text-[var(--primary)] group-hover:scale-110 transition-transform duration-500">
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[var(--primary-light)] to-[var(--accent-light)] border border-[var(--border)] flex items-center justify-center text-[var(--primary)] group-hover:scale-110 transition-transform duration-500">
             <Bot size={32} />
           </div>
           <div className="flex flex-col items-end gap-2">

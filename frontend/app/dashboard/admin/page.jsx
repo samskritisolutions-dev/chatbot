@@ -83,7 +83,7 @@ export default function AdminDashboard() {
   return (
     <div className="space-y-8 animate-fade-in">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-8 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-3xl border border-[var(--primary-light)] shadow-2xl shadow-blue-500/10">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-8 bg-gradient-to-r from-[var(--primary-light)] to-[var(--accent-light)] rounded-3xl border border-[var(--primary-light)] shadow-2xl shadow-[var(--sidebar-active-shadow)]">
         <div className="flex items-center gap-4">
           <div className="w-16 h-16 bg-[var(--primary)] rounded-2xl flex items-center justify-center text-white shadow-lg shadow-[var(--sidebar-active-shadow)]">
             <ShieldCheck size={32} />
@@ -127,7 +127,7 @@ export default function AdminDashboard() {
                 <div className="flex items-center gap-2">
                   <div className="relative">
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--foreground-muted)]" size={14} />
-                    <input type="text" placeholder="Search clients..." className="bg-white/5 border border-[var(--border-strong)] rounded-lg py-1.5 pl-9 pr-4 text-xs focus:outline-none focus:ring-1 focus:ring-blue-500" />
+                    <input type="text" placeholder="Search clients..." className="bg-white/5 border border-[var(--border-strong)] rounded-lg py-1.5 pl-9 pr-4 text-xs focus:outline-none focus:ring-1 focus:ring-[var(--primary)]" />
                   </div>
                 </div>
               </div>
@@ -160,7 +160,7 @@ export default function AdminDashboard() {
                           <select 
                             value={client.plan || 'free'} 
                             onChange={(e) => handleUpdatePlan(client.id, e.target.value)}
-                            className="bg-white/5 border border-[var(--border-strong)] rounded-lg px-3 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-blue-500 capitalize"
+                            className="bg-white/5 border border-[var(--border-strong)] rounded-lg px-3 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-[var(--primary)] capitalize"
                           >
                             <option value="free">Free Plan</option>
                             <option value="pro">Pro Plan</option>

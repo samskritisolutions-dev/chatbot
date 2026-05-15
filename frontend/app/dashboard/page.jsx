@@ -42,7 +42,7 @@ export default function DashboardPage() {
 
   if (loading) return (
     <div className="h-[80vh] flex flex-col items-center justify-center gap-4">
-      <div className="w-16 h-16 border-4 border-blue-600/20 border-t-blue-600 rounded-full animate-spin" />
+      <div className="w-16 h-16 border-4 border-[var(--primary)]/20 border-t-[var(--primary)] rounded-full animate-spin" />
       <p className="text-[var(--foreground-muted)] font-black text-[10px] uppercase tracking-[0.3em] animate-pulse">Syncing Neural Core...</p>
     </div>
   );

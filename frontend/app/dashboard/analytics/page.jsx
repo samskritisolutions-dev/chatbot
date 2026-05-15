@@ -77,7 +77,7 @@ export default function AnalyticsPage() {
               Live System Status
             </div>
             <h1 className="text-5xl font-black tracking-tighter mb-2">
-              Performance <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">Insights</span>
+              Performance <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-[var(--accent)]">Insights</span>
             </h1>
             <p className="text-[var(--foreground-muted)] text-sm font-medium max-w-md leading-relaxed">Real-time intelligence and neural activity overview for your AI workforce.</p>
           </div>
@@ -86,7 +86,7 @@ export default function AnalyticsPage() {
                 <Filter size={16} />
                 Advanced Filter
              </button>
-             <button className="bg-[var(--primary)] text-white font-bold px-8 py-4 rounded-2xl flex items-center gap-2 shadow-2xl shadow-blue-600/40 hover:scale-105 active:scale-95 transition-all">
+             <button className="bg-[var(--primary)] text-white font-bold px-8 py-4 rounded-2xl flex items-center gap-2 shadow-2xl shadow-[var(--sidebar-active-shadow)] hover:scale-105 active:scale-95 transition-all">
                 <Calendar size={16} />
                 Last 7 Days
              </button>
@@ -245,7 +245,7 @@ export default function AnalyticsPage() {
 
           {/* Sidebar Insights */}
           <div className="lg:col-span-4 space-y-8">
-             <div className="bg-gradient-to-br from-blue-600/20 to-purple-600/20 border border-[var(--border-strong)] rounded-[48px] p-10 relative overflow-hidden group">
+             <div className="bg-gradient-to-br from-[var(--primary-light)] to-[var(--accent-light)] border border-[var(--border-strong)] rounded-[48px] p-10 relative overflow-hidden group">
                 <div className="absolute inset-0 bg-[var(--primary-light)] blur-3xl group-hover:bg-[var(--primary-light)] transition-colors duration-1000" />
                 <div className="relative z-10">
                    <div className="w-14 h-14 rounded-2xl bg-[var(--primary-light)] flex items-center justify-center text-[var(--primary)] mb-8 shadow-inner">
